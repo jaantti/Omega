@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* CSS Document */
+
+img{
+	width:100%;
+}
+.tb1{
+	width:100%;
+}
+#content{
+	padding-left:10%;
+	padding-right:10%;
+	font-size: 13px; 
+	line-height: 1.231;
+	font-family: sans-serif; 
+	color: #000;
+	
+}
+#header{
+	clear:both;
+}
+#page_name{
+	float:left;
+	width:80%;
+}
+#login{
+	text-align:right;
+	float:right;
+	width:20%;
+}
+#login a{
+	text-decoration:none;
+}
+#login a:link,a:visited{
+	color:#000;
+}
+#login a:hover{
+	color:#444;
+}
+
+	
+#main{
+	padding-top:0.5em;
+	clear: both;
+	width: 100%;
+}
+#menu{
+	clear:both;
+}
+
+#menu, #menu ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+#menu a {
+	text-decoration:none;
+	display: block;
+	width: 7em;
+}
+#menu a:link{
+	color: #000;
+}
+#menu a:visited{
+	background: #CCC;
+	color: #000;
+}
+#menu a:hover {
+	background:#DDD;
+}
+
+#menu li {
+	background:#CCC;
+	float: left;
+	width: 7em;
+	padding-left: 0.5em;
+}
+#menu li ul {
+	background:#EEE;
+	position: absolute;
+	width: 7em;
+	left: -999em;
+}
+
+#menu li:hover ul {
+	/*background:#EEE*/
+	left: auto;
+}
