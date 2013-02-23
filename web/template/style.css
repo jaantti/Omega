@@ -4,29 +4,43 @@
 img{
 	width:100%;
 }
-.tb1{
+.search{
 	width:100%;
 }
 #content{
-	padding-left:10%;
-	padding-right:10%;
-	font-size: 13px; 
+	margin-left:10%;
+	margin-right:10%;
+	font-size: 0.9em; 
 	line-height: 1.231;
 	font-family: sans-serif; 
 	color: #000;
+	background-color: #e6f0fd;
+	
 	
 }
 #header{
+	
+	background-size:contain;
+	background-image:url('header2.png');
+	background-repeat:repeat-x;
+	min-height: 5em;
 	clear:both;
+	
 }
 #page_name{
-	float:left;
-	width:80%;
+	width: 80%-1em;
+	margin-left: 1em;
+	float: left;
+	background-color: transparent;
+	
 }
 #login{
+	width:20%-1em;
+	margin-right:1em;
 	text-align:right;
 	float:right;
-	width:20%;
+	background-color: transparent;
+	
 }
 #login a{
 	text-decoration:none;
@@ -42,9 +56,20 @@ img{
 #main{
 	padding-top:0.5em;
 	clear: both;
-	width: 100%;
+	width: 100%-2em;
+	padding-left: 1em;
+	padding-right: 1em;
+	
 }
-#menu{
+
+#main p{
+	text-align: justify;
+}
+#menu_area{
+	display: box;
+	padding-left: 0.5em;
+	min-height: 100%;
+	background-color: #e6f0fd;
 	clear:both;
 }
 
