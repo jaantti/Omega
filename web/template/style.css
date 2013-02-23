@@ -1,6 +1,22 @@
 @charset "utf-8";
 /* CSS Document */
 
+@media print{
+	#header{
+		display: none;
+	}
+	#menu{
+		display: none;
+	}
+	#footer{
+		display: none;
+	}
+	#content{
+		background-color: #fff;
+		margin: 0;
+	}
+}
+
 img{
 	width:100%;
 }
@@ -8,8 +24,8 @@ img{
 	width:100%;
 }
 #content{
-	margin-left:10%;
-	margin-right:10%;
+	margin:0 10%;
+	padding: 0 1em;
 	font-size: 0.9em; 
 	line-height: 1.231;
 	font-family: sans-serif; 
@@ -24,91 +40,115 @@ img{
 	background-image:url('header2.png');
 	background-repeat:repeat-x;
 	min-height: 5em;
+	margin: 0 -1em;
 	clear:both;
 	
 }
 #page_name{
-	width: 80%-1em;
+	
 	margin-left: 1em;
 	float: left;
 	background-color: transparent;
-	
 }
+
+#page_name h1{
+	color: white;
+	text-shadow: 0 0 3px #000;
+}
+
 #login{
-	width:20%-1em;
+
 	margin-right:1em;
 	text-align:right;
 	float:right;
 	background-color: transparent;
 	
 }
-#login a{
+
+a{
 	text-decoration:none;
 }
-#login a:link,a:visited{
+a:link,a:visited{
 	color:#000;
 }
-#login a:hover{
+a:hover{
 	color:#444;
 }
 
 	
 #main{
-	padding-top:0.5em;
+	padding:0.5em 0 0;
 	clear: both;
-	width: 100%-2em;
-	padding-left: 1em;
-	padding-right: 1em;
-	
 }
 
 #main p{
 	text-align: justify;
 }
-#menu_area{
-	display: box;
-	padding-left: 0.5em;
-	min-height: 100%;
-	background-color: #e6f0fd;
-	clear:both;
-}
 
-#menu, #menu ul {
+
+#menu ul {
+	background:#dae8f9;
 	padding: 0;
-	margin: 0;
+	margin: 0 -1em;
 	list-style: none;
+	position: relative;
+	clear: both;
 }
 
-#menu a {
+#menu ul:after{
+	content: "";
+	clear: both;
+	display: block;
+}
+
+#menu ul ul {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 100%;
+	display: none;
+}
+
+#menu ul ul li {
+	border: none;
+	outline: solid;
+	outline-width: thin;
+	float: none;
+	position: relative;
+	min-width: 100%;
+}
+
+#menu ul ul li a {
+	color: #000;
+}
+
+#menu ul ul li a:hover {
+	/*background-color: #88b3e8;*/
+}
+
+#menu ul li:hover > ul {
+	display: block;
+	min-width: 20%
+}
+
+#menu ul li {
+	padding: 0.5em 0;
+	border-style: double none;
+	float: left;
+	min-width: 20%;
+}
+
+#menu ul li:hover {
+	background:#88b3e8;
+}
+
+#menu ul li:hover > a{
+	color: #fff;
+}
+
+#menu ul li a {
+	padding-left: 1em;
 	text-decoration:none;
 	display: block;
-	width: 7em;
-}
-#menu a:link{
-	color: #000;
-}
-#menu a:visited{
-	background: #CCC;
-	color: #000;
-}
-#menu a:hover {
-	background:#DDD;
-}
-
-#menu li {
-	background:#CCC;
-	float: left;
-	width: 7em;
-	padding-left: 0.5em;
-}
-#menu li ul {
-	background:#EEE;
-	position: absolute;
-	width: 7em;
-	left: -999em;
-}
-
-#menu li:hover ul {
-	/*background:#EEE*/
-	left: auto;
+	min-width: 20%;
 }
