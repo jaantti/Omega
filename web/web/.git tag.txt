@@ -1,2 +1,2 @@
-git tag -a tag_name -m ''
-git push origin tag_name
+git tag -a v1.0.0 -m 'Esimene tag'
+git push origin v1.0.0
