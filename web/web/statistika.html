@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Statistika</title>
+<style type="text/css">
+@import url("style.css");
+</style>
+<script type="text/javascript">
+<!--
+function FP_goToURL(url) {//v1.0
+ window.location=url;
+}
+// -->
+</script>
+</head>
+
+<body>
+	<div id="content">
+      <div id="header">
+        <div id="page_name">
+          <h1>Statistika</h1> 
+        </div>
+        <div id="login">
+          <input type="text" class="search" value="Otsi..." onfocus="if
+		  (this.value==this.defaultValue) this.value='';">
+    	  <form action="">
+    	    <input type="button" onClick="window.location='sisselogimine.html'" value="Logi sisse">
+    	  </form> 
+        </div>
+      </div>
+      
+      <div id="menu">
+      	<ul>
+          <li><a href="index.html">Pealehele</a></li>
+          <li><a href="#">Valijale</a>
+          	<ul>
+              <li><a href="kandidaadid.html">1. piirkond</a></li>
+              <li><a href="kandidaadid.html">2. piirkond</a></li>
+              <li><a href="sisselogimine.html">Kasutajainfo</a></li>
+            </ul>
+          </li>
+          <li><a href="sisselogimine.html">Kandideerijale</a></li>
+          <li><a href="statistika.html">Statistika</a></li>
+          <li><a href="abi.html">Abi</a></li>
+        </ul>
+      </div>
+      
+      <div id="statistika">
+        <div id="stat_contr">
+        <select name="stat_piirkond">
+          <option value="koik">Kõik piirkonnad</option>
+          <option value="pk1">Piirkond 1</option>
+          <option value="pk2">Piirkond 2</option>
+          <option value="pk3">Piirkond 3</option>
+        </select>
+        <select name="stat_partei">
+          <option value="koik">Kõik parteid</option>
+          <option value="pk1">Partei 1</option>
+          <option value="pk2">Partei 2</option>
+          <option value="pk3">Partei 3</option>
+        </select>
+        <input name="stat_sort" type="button" value="Sorteeri" />
+        <input name="stat_refresh" type="button" value="Värskenda tulemusi" /><br />
+        <input name="stat_kandidaat" type="text" value="Otsi kindlat kandidaati" onfocus="if
+		  (this.value==this.defaultValue) this.value='';"/>
+        <input name="stat_otsi" type="button" value="Otsi" onclick="FP_goToURL(/*href*/'kandidaadi_info.html')" /><br />
+        <p></p>
+        </div>
+        <div>
+        <table>
+          <tr>
+			<th>Partei</th>
+			<th>Piirkond</th>
+            <th>Hääli</th>
+		  </tr>
+          <tr>
+          	<td>Partei 1</td>
+         	<td>Piirkond 1</td>
+            <td class="haaled">-</td>
+          </tr>
+          <tr>
+          	<td>Partei 1</td>
+          	<td>Piirkond 2</td>
+            <td class="haaled">2</td>
+          </tr>
+          <tr>
+          	<td>Partei 2</td>
+          	<td>Piirkond 1</td>
+            <td class="haaled">5</td>
+          </tr>
+        </table>
+      </div>
+      </div>
+      
+      <div id="footer">
+        <p>Powered by Omega.</p>
+      </div>
+	</div>
+</body>
+</html>
