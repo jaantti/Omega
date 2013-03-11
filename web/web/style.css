@@ -88,6 +88,18 @@ p {
 	padding:0.5em 0 0;
 	clear: both;
 }
+form li{
+	list-style:none;
+	margin-bottom:5px;
+}
+form ul li label{
+	float: left;
+	clear:left;
+	width: 256px;
+	text-align:right;
+	margin-right:10px;
+	
+}
 
 /*----------------------------*/
 /*----------------------------*/
@@ -156,6 +168,8 @@ p {
 	position: absolute;
 	top: 100%;
 	display: none;
+	opacity: 0.9;
+	z-index: 4;
 }
 
 #menu ul ul li {
@@ -230,21 +244,21 @@ input.next{
 div.erakond{
 	border-top: 1px solid;
 }
-#tabs ul{
+#party_tabs ul{
 	list-style: none;
 	padding: 0px;
 	margin: 0px;
 }
-#tabs li {
+#party_tabs li {
 	display: inline;
 	border: solid;
 	border-width: 1px 1px 0 1px;
 	margin-right: 0.5em;
 }
-#tabs li a {
+#party_tabs li a {
 	padding: 0 1em ;
 }
-#tabs #selected {
+#party_tabs ul .selected_tab {
 	padding-bottom: 2px; 
-	background: #e6f0fd;
+	background: #fff;//#e6f0fd;
 }

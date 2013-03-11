@@ -1,0 +1,14 @@
+
+/*jQuery(document).ready(function(){
+	data_from_json()
+	$("#my_table").tablesorter();
+	});*/
+function test(){
+	
+	$("#header").remove();
+	$("#main").load("kandidaadid_sisu.html");
+}
+
+function FP_goToURL(url) {//v1.0
+ window.location=url;
+}

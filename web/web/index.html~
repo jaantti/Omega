@@ -12,7 +12,7 @@
 <script type="text/javascript" src="jquery.tablesorter.js"></script>
 <script type="text/javascript" src="scripts/data_from_json.js"></script>
 <script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="scripts/menu_AJAX.js"></script>
+<script src="menu_AJAX.js"></script>
 <script type="text/javascript" src = "scripts/valideering.js"></script>
 <!--<script type="text/javascript" src="scripts/sorttable.js"></script>-->
 </head>

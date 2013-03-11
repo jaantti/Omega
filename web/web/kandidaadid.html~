@@ -49,9 +49,9 @@ function FP_popUpMsg(msg) {//v1.0
         <h2>Generic piirkond 1</h2>
         <div id="party_tabs">
           <ul>
-            <!--<li class="selected_tab"><a href="#" >Erakond 1</a></li>
+            <li class="selected_tab"><a href="#" >Erakond 1</a></li>
             <li><a href="#" >Erakond 2</a></li>
-            <li><a href="#" >Erakond 3</a></li>-->
+            <li><a href="#" >Erakond 3</a></li>
           </ul>
         </div>
         

@@ -1,21 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Lisa kandidaadina</title>
-<style type="text/css">
-@import url("style.css");
-</style>
-<script type="text/javascript">
-<!--
-function FP_popUpMsg(msg) {//v1.0
- alert(msg);
-}
-
-function FP_goToURL(url) {//v1.0
- window.location=url;
-}
-// -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Lisa kandidaadina</title>
+	<style type="text/css">
+	@import url("style.css");
+	</style>
+	<script type="text/javascript" src = "scripts/valideering.js">
 </script>
 </head>
 
@@ -50,42 +41,49 @@ function FP_goToURL(url) {//v1.0
         </ul>
       </div>
       <div id="main">
-        <div class="kandidaat_form">
-          <p>Ees- ja perekonnanimi</p>
-          <input name="kandidaat_nimi" type="text" />
-        </div>
-        <div class="kandidaat_form">
-          <p>Isikukood</p>
-          <input name="kandidaat_id" type="text" maxlength="11" />
-        </div>
-        <div class="kandidaat_form">
-          <p>Erakondlik kuuluvus</p>
-          <input name="kandidaat_erakond" type="text" />
-        </div>
-        <div class="kandidaat_form">
-          <p>Aadress</p>
-          <input name="kandidaat_aadress" type="text" />
-        </div>
-        <div class="kandidaat_form">
-          <p>Kontakt telefon</p>
-          <input name="kandidaat_telefon" type="text" />
-        </div>
-        <div class="kandidaat_form">
-          <p>E-posti aadress</p>
-          <input name="kandidaat_epost" type="text" />
-        </div>
-        <div class="kandidaat_form">
-         <p>Lisa pilt</p>
-          <input name="kandidaat_pilt" type="text" />
-          <input name="sirvi" type="button" value="Sirvi..." />
-          <input name="lisa" type="button" value="Lisa" />
-        </div>
-        <div class="kandidaat_form">
-          <input name="lisa_kandidaat" type="button" value="Lisa ennast kandidaadina" onclick="FP_popUpMsg('Olete lisanud ennast kandidaadina sinna sinna sinna.')" />	  		</div>
-        
-        
-      </div>
-      
+      <form action="" id = "forms" onsubmit="return validateForm()">
+        <ul>  
+		<li><label for="kandidaat_nimi">Ees- ja perekonnanimi :</label></li>  
+		<li><input type="text" name = "kandidaat_nimi" id = "kandidaat_nimi" size="50" onblur="validateName(kandidaat_nimi)"/></li>
+		<span id="kandidaat_nimiError" style="display: none;">Viga  ees- ja perekonnanime sisestamisel</span>
+		<li><label for="kandidaat_id">Isikukood :</label></li>  
+		<li><input type="text" name="kandidaat_id" id= "kandidaat_id" size="11" onblur="kandidaat_id_validation(kandidaat_id)"/></li>
+		<span id="kandidaat_idError" style="display: none;">Viga isikukoodi sisestamisel</span>    
+		<li><label for="kandidaat_erakond">Erakondlik kuuluvus :</label></li>  
+		<li><select name="kandidaat_erakond" id = "kandidaat_erakond" onblur="erakondselect(kandidaat_erakond)">  
+		<option selected="" value="Default">(Palun vali erakond)</option>  
+		<option value="IRL">IRL</option>  
+		<option value="KE">Keskerakond</option>  
+		<option value="RO">Rohelised</option>  
+		<option value="RE">Reformierakond</option>  
+		<option value="SDE">Sotsiaaldemokraatlik erakond</option>  
+		</select></li>
+		<span id="kandidaat_erakondError" style="display: none;">Viga erakonna valimisel</span>
+		<li><label for="kandidaat_piirkond">Kandideerimispiirkond :</label></li>  
+		<li><select name="kandidaat_piirkond" id = "kandidaat_piirkond" onblur="piirkondselect(kandidaat_piirkond)">  
+		<option selected="" value="Default">(Palun vali piirkond)</option>  
+		<option value="HAR">Haabersti,Põhja-Tallinna ja Kristiine linnaosa</option>  
+		<option value="KESK">Kesklinna, Lasnamäe ja Pirita linnaosa</option>  
+		<option value="MUNÕ">Mustamäe ja Nõmme linnaosa</option>  
+		<option value="HAR">Harju- ja Raplamaa</option>  
+		<option value="JÕTA">Jõgeva- ja Tartumaa</option>  
+		</select></li>
+		<span id="kandidaat_piirkondError" style="display: none;">Viga piirkonna valimisel</span>
+		<li><label for="kandidaat_aadress">Aadress :</label></li>  
+		<li><input type="text" name="kandidaat_aadress" id="kandidaat_aadress" size="50" onblur="alphanumeric(kandidaat_aadress)"/></li>
+		<span id="kandidaat_aadressError" style="display: none;">Viga aadressi sisestamisel</span>
+		<li><label for="kandidaat_telefon">Kontakt telefon :</label></li>  
+		<li><input type="text" name="kandidaat_telefon" id="kandidaat_telefon" onblur="allnumeric(kandidaat_telefon)"/></li>
+		<span id="kandidaat_telefonError" style="display: none;">Viga telefoninumbri sisestamisel</span>		
+		<li><label for="kandidaat_epost">E-posti aadress :</label></li>  
+		<li><input type="text" name="kandidaat_epost" id = "kandidaat_epost" size="50" onblur="ValidateEmail(kandidaat_epost)" /></li>
+		<span id="kandidaat_epostError" style="display: none;">Viga Emaili sisestamisel</span>	
+		<li><label for="kandidaat_pilt">Lisa pilt : </label></li>
+		<li><input type="text" name="kandidaat_pilt" /><input type="button" name="sirvi" value="Sirvi..." /><input name="lisa" type="button" value="Lisa" />
+		<li><input type="submit" id="submit" name="submit" value="Lisa ennast kandidaadina" /></li>  
+		</ul>  
+		</form>
+      </div>  
       <div id="footer">
         <p>Powered by Omega.</p>
       </div>
