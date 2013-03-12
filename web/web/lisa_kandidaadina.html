@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<title>Lisa kandidaadina</title>
 	<style type="text/css">
 	@import url("style.css");
@@ -40,8 +40,56 @@
           <li><a href="abi_autend.html">Abi</a></li>
         </ul>
       </div>
-      <div id="main">
-      <form action="" id = "forms" onsubmit="return validateForm()">
+      <div id="lisa_kandidaadina">
+        <li class="kandidaat_form">
+          <p>Ees- ja perekonnanimi</p>
+          <input type="text" id="kandidaat_nimi"/>
+        </li>
+        <li class="kandidaat_form">
+          <p>Isikukood</p>
+          <input type="text" id="kandidaat_id"/>
+        </li>
+        <li class="kandidaat_form">
+          <p>Erakondlik kuuluvus</p>
+          <select id = "kandidaat_erakond">
+            <option selected="" value="Default">(Palun vali erakond)</option>  
+		      <option value="IRL">IRL</option>  
+		      <option value="KE">Keskerakond</option>  
+		      <option value="RO">Rohelised</option>  
+		      <option value="RE">Reformierakond</option>  
+		      <option value="SDE">Sotsiaaldemokraatlik erakond</option>
+		    </select>  
+        </li>
+        <li class="kandidaat_form">
+          <p>Kandideerimispiirkond</p>
+          <select id = "kandidaat_piirkond">
+            <option selected="" value="Default">(Palun vali piirkond)</option>  
+		      <option value="HAR">Haabersti,Põhja-Tallinna ja Kristiine linnaosa</option>  
+		      <option value="KESK">Kesklinna, Lasnamäe ja Pirita linnaosa</option>  
+		      <option value="MUNÕ">Mustamäe ja Nõmme linnaosa</option>  
+		      <option value="HAR">Harju- ja Raplamaa</option>
+		      <option value="JÕTA">Jõgeva- ja Tartumaa</option>
+		    </select>
+        </li>
+        <li class="kandidaat_form">
+          <p>Aadress</p>
+          <input type="text" id = "kandidaat_aadress"/>
+        </li>
+        <li class="kandidaat_form">
+          <p>Telefoni number</p>
+          <input type="text" id = "kandidaat_telefon"/>
+        </li>
+        <li class="kandidaat_form">
+          <p>E-post</p>
+          <input type="text" id = "kandidaat_epost"/>
+        </li>
+        <li class="kandidaat_form">
+          <p>Pilt</p>
+          <input type="text" id = "kandidaat_pilt"/><br />
+          <input type="button" name="sirvi" value="Sirvi..." /><input name="lisa" type="button" value="Lisa" />
+        <li>
+        <li><input type="button" id="submit_kandidaat" value="Lisa ennast kandidaadina" /></li>
+      <!--<form action="" id = "forms" onsubmit="return validateForm()">
         <ul>  
 		<li><label for="kandidaat_nimi">Ees- ja perekonnanimi :</label></li>  
 		<li><input type="text" name = "kandidaat_nimi" id = "kandidaat_nimi" size="50" onblur="validateName(kandidaat_nimi)"/></li>
@@ -82,8 +130,8 @@
 		<li><input type="text" name="kandidaat_pilt" /><input type="button" name="sirvi" value="Sirvi..." /><input name="lisa" type="button" value="Lisa" />
 		<li><input type="submit" id="submit" name="submit" value="Lisa ennast kandidaadina" /></li>  
 		</ul>  
-		</form>
-      </div>  
+		</form>-->
+      </div>
       <div id="footer">
         <p>Powered by Omega.</p>
       </div>

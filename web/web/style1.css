@@ -24,32 +24,19 @@ img{
 	width:100%;
 }
 
-.loading_img{
-	margin:auto; /* Required */
-	position:absolute;
-	
-	left:0;right:0; /* Aligns horizontal center */
-	max-height:100%; /* images bigger than 175 px  */
-	max-width:100%;  /* will be shrinked to size */ 
-}
-
 .search{
 	width:100%;
 }
-body{
-	background-image:url('taust.gif');
-	background-size:100%;
-	
-}
+
 #content{
 	margin:0 10%;
 	padding: 0 1em;
 	font-size: 0.9em; 
 	line-height: 1.231;
 	font-family: sans-serif; 
-	background-image:url('content_taust.gif');
-	background-size:100%;
-	}
+	color: #000;
+	background-color: #e6f0fd;
+}
 
 #header{
 	background-size:contain;
@@ -116,9 +103,6 @@ form ul li label{
 
 /*----------------------------*/
 /*----------------------------*/
-#table_area{
-	min-height: 50px;
-}
 
 #statistika table{
 	width: 100%;

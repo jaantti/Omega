@@ -133,8 +133,9 @@ function load_page(tag){
       case "#kandidaadid":
       document.title = "Kandidaadid";
       $("#main").load("kandidaadid.html #main");
-      $("#page_name").load("kandidaadid.html #page_name");
-      populate_area(tag[1], tag[2]);
+      $("#page_name").load("kandidaadid.html #page_name", function(){
+   				populate_area(tag[1], tag[2]);
+   				});
       break;
       case "#kasutajainfo":
          if (logged_in == 0) {
@@ -156,16 +157,20 @@ function load_page(tag){
          }
          else {
          	document.title = "Kandidaadina lisamine";
-            $("#main").load("lisa_kandidaadina.html #main");
             $("#page_name").load("lisa_kandidaadina.html #page_name");
+            $("#main").load("lisa_kandidaadina.html #lisa_kandidaadina", function(){
+   				ready_kandidaat_form();
+   				});
          }
       break;
       case "#statistika":
       document.title = "Statistika";
-      $("#main").load("statistika.html #statistika");
+      $("#main").load("statistika.html #statistika", function(){
+   				data_from_json("piirkond");
+   				});
       $("#page_name").load("statistika.html #page_name");
 		
-		data_from_json("piirkond");	
+			
       break;
       case "#abi":
       document.title = "Abi hääletamisel";
