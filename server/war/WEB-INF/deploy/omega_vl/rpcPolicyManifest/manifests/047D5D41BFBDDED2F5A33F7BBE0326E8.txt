@@ -1,0 +1,2 @@
+serviceClass: com.appspot.omega.client.GreetingService
+path: 7F9B09EADAE5F005947FB69CF4DC2B08.gwt.rpc

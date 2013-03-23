@@ -1,0 +1,25 @@
+{
+	"region" : [ {
+		"id" : "HA",
+		"name" : "Harjumaa"
+	},{
+		"id" : "LA",
+		"name" : "L‰‰nemaa"
+	},{
+		"id" : "VI",
+		"name" : "Ida-Virumaa"
+	},{
+		"id" : "JO",
+		"name" : "Jıgevamaa"
+	},{
+		"id" : "PO",
+		"name" : "Pılvamaa"
+	},{
+		"id" : "TA",
+		"name" : "Tartumaa"	
+	},{
+		"id" : "VA",
+		"name" : "Valgamaa"	
+	}
+	]
+}
