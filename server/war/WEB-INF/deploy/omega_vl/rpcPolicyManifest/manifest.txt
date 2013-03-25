@@ -1,2 +1,0 @@
-# Module omega_vl
-# RPC service class, partial path of RPC policy file

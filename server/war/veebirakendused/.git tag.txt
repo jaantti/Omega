@@ -1,2 +1,0 @@
-git tag -a tag_name -m ''
-git push origin tag_name
