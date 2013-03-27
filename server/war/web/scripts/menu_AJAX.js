@@ -37,57 +37,53 @@ function lae_poliitik(tag) {
 }
 
 function genereeri_poliitik(nimi, id){
-	var poliitik=$('<div id="'+id+'" class="poliitik"></div>');
+	var poliitik=$('<div id="K'+id+'" class="poliitik"></div>');
 	var symlink=$('<a href="javascript:void(0)"></a>');
 	var portree=$('<img src="profile_small.png"/>');
 	var nimetus=$('<p>'+nimi+'</p>');
 	symlink.append(portree).append(nimetus);
 	poliitik.append(symlink);
    $(".erakond").append(poliitik);
-   $("#"+id).click(function() {window.location.hash = "#"+id});
-}
-    
-function populate_party(){
-   $.getJSON('data/findCandidatesByPartyAndRegion.json', function(data) {
-      $.each(data.candidates, function(k, v) {
-      	var id = v.id;
-			$.each(this.person, function(k , v) {
-				if(k == 'name'){
-					genereeri_poliitik(v, id);
-				}
-			})
-		})
-	});
+   $("#K"+id).click(function() {window.location.hash = "#K"+id});
 }
 
 function populate_area(area_id, selected_id) {
-	$.getJSON('data/findCandidatesByRegion.json', function(data) {
+	//area_id = area_id.substr(1);
+	//selected_id = selected_id.substr(1);
+	$.getJSON('/PartyServlet?piirkond_id='+area_id.substr(1), function(data) {
 		$("#main h2").text($("#"+window.location.hash.split("%%")[1]).text());
 		if (selected_id == undefined) {selected_id = "ALL"};
 		var parties = ["ALL"];
 		var party=$('<li id="ALL"><a href="javascript:void(0)" >Kõik parteid</a></li>');
 		$("#party_tabs ul").append(party);
-		$("#ALL").click(function() {window.location.hash = window.location.hash.split("%%")[0] +"%%"+ window.location.hash.split("%%")[1]});
-      $.each(data.candidates, function(k, v) {
+		$("#ALL").click(function() {
+			var curHash = window.location.hash.split("%%");
+			window.location.hash = curHash[0] +"%%"+ curHash[1]
+		});
+      $.each(data, function(k, v) {
       	var id = v.id;
-			var party_id = v.party.id;
+			var party_id = v.idErakond;
 			if($.inArray(party_id, parties) == -1){
 				parties.push(party_id);
-				var party=$('<li id="'+party_id+'"><a href="javascript:void(0)" >'+v.party.name+'</a></li>')
+				var party=$('<li id="E'+party_id+'"><a href="javascript:void(0)" >'+v.nimiErakond+'</a></li>')
 				$("#party_tabs ul").append(party);
-				$("#"+party_id).click(function() {window.location.hash = window.location.hash.split("%%")[0] +"%%"+ window.location.hash.split("%%")[1] +"%%"+ party_id});
+				$("#E"+party_id).click(function() {
+					alert('poop');
+					var curHash = window.location.hash.split("%%");
+					window.location.hash = curHash[0] +"%%"+ curHash[1] +"%%E"+ party_id
+				});
 			}
-			if (selected_id == "ALL" || selected_id == party_id) {
-				genereeri_poliitik(v.person.name, id);
+			if (selected_id == "ALL" || selected_id.substr(1) == party_id) {
+				genereeri_poliitik(v.nimi, id);
 			}
 		})
 		var length = parties.length,
 		element = null;
 		for (var i = 0; i < length; i++) {
 			element = parties[i];
-			$("#"+element).removeClass("selected_tab")
+			$("#E"+element).removeClass("selected_tab")
 		}
-		$("#"+parties[$.inArray(selected_id, parties)]).addClass("selected_tab");
+		$("#E"+parties[$.inArray(selected_id.substr(1), parties)]).addClass("selected_tab");
 		//alert(selected_id+" | "+parties);
 	});
 }
@@ -97,9 +93,9 @@ function get_areas(){
 		$.each(data, function(k, v) {
 			var id = v.id;
 			var name = v.nimi;
-			var loc = $('<li id="'+id+'"><a href="javascript:void(0)" >'+name+'</a></li>')
+			var loc = $('<li id="P'+id+'"><a href="javascript:void(0)" >'+name+'</a></li>')
 			$("#areas").append(loc);
-			$("#"+id).click(function() {window.location.hash = "kandidaadid%%"+id});
+			$("#P"+id).click(function() {window.location.hash = "kandidaadid%%P"+id});
 		})
 		$("#areas").append($("#kasutajainfo"));
 	});

@@ -21,8 +21,34 @@ public class SQLConnection {
 		super();
 		create();
 	}
-
+    
     public String execute(String query){
+    	String result = null;
+    	try {
+			if (stmt.execute(query)) {
+			    rs = stmt.getResultSet();
+			} else {
+			    System.err.println("select failed");
+			}
+			Gson gs = new Gson();
+            KandidaatByRegion[] pk = new KandidaatByRegion[15];
+            int i = 0;
+            while (rs.next()) {
+                pk[i] = new KandidaatByRegion(rs.getInt(1), rs.getString(2) +" "+ rs.getString(3), rs.getInt(4), rs.getString(5));
+                i++;
+            }
+            result = gs.toJson(pk);
+            
+		} 
+    	catch (SQLException ex) {
+			System.out.println("SQLException: " + ex.getMessage()); 
+            System.out.println("SQLState: " + ex.getSQLState()); 
+            System.out.println("VendorError: " + ex.getErrorCode());
+		}
+    	return result;
+    }
+    
+    public String execute_piirkond(){
     	String result = null;
     	try {
 			if (stmt.execute("select * from piirkond order by nimi")) {
