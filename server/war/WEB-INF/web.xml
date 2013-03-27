@@ -16,6 +16,14 @@
 		<servlet-name>RegionServlet</servlet-name>
 		<url-pattern>/RegionServlet</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>PartyServlet</servlet-name>
+		<servlet-class>com.appspot.omega.PartyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PartyServlet</servlet-name>
+		<url-pattern>/PartyServlet</url-pattern>
+	</servlet-mapping>
 
 	<!-- Default page to serve -->
   <welcome-file-list>
