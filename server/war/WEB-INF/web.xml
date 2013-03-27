@@ -8,10 +8,18 @@
 		<servlet-name>hello</servlet-name>
 		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
-  
-  <!-- Default page to serve -->
+	<servlet>
+		<servlet-name>RegionServlet</servlet-name>
+		<servlet-class>com.appspot.omega.RegionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegionServlet</servlet-name>
+		<url-pattern>/RegionServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>web/index.html</welcome-file>
   </welcome-file-list>
 
 </web-app>

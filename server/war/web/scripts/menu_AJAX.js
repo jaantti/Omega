@@ -93,10 +93,10 @@ function populate_area(area_id, selected_id) {
 }
 
 function get_areas(){
-	$.getJSON('data/region.json', function(data) {
-		$.each(data.region, function(k, v) {
+	$.getJSON('/RegionServlet', function(data) {
+		$.each(data, function(k, v) {
 			var id = v.id;
-			var name = v.name;
+			var name = v.nimi;
 			var loc = $('<li id="'+id+'"><a href="javascript:void(0)" >'+name+'</a></li>')
 			$("#areas").append(loc);
 			$("#"+id).click(function() {window.location.hash = "kandidaadid%%"+id});
