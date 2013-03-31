@@ -18,7 +18,7 @@ public class SQLConnection {
 	Statement stmt = null;
 	ResultSet rs = null;
 
-	static private String dbURL = "jdbc:google:rdbms://omega-vl-sql/omega-vl";
+	static private String dbURL = "jdbc:google:rdbms://omega-vl-sql:omega-vl/appfog";
 	static private String username = "appfog";
 	static private String password = "562325";
 
@@ -83,10 +83,7 @@ public class SQLConnection {
 
 			PreparedStatement stmt;
 			try {
-				stmt = conn.prepareStatement("select eesnimi, perenimi, erakond.nimi, piirkond.nimi as piirkond, count(kandidaat.id) as haaled " +
-						"from appfog.kandidaat, appfog.isik, appfog.erakond, appfog.piirkond where " +
-						"isik.kandidaat = kandidaat.id and kandidaat.piirkond = piirkond.id and " +
-						"kandidaat.erakond = erakond.id group by kandidaat.id order by haaled desc");
+				stmt = conn.prepareStatement("call koik_haaled()");
 				rs = stmt.executeQuery();
 
 				while (rs.next()) {
