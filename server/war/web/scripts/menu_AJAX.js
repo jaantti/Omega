@@ -56,19 +56,19 @@ function populate_area(area_id, selected_id) {
 		var parties = ["ALL"];
 		var party=$('<li id="ALL"><a href="javascript:void(0)" >Kõik parteid</a></li>');
 		$("#party_tabs ul").append(party);
+		if (selected_id == "ALL") {$("#ALL").addClass("selected_tab")};
 		$("#ALL").click(function() {
 			var curHash = window.location.hash.split("%%");
 			window.location.hash = curHash[0] +"%%"+ curHash[1]
 		});
-      $.each(data, function(k, v) {
-      	var id = v.id;
+		$.each(data, function(k, v) {
+			var id = v.id;
 			var party_id = v.idErakond;
 			if($.inArray(party_id, parties) == -1){
 				parties.push(party_id);
 				var party=$('<li id="E'+party_id+'"><a href="javascript:void(0)" >'+v.nimiErakond+'</a></li>')
 				$("#party_tabs ul").append(party);
 				$("#E"+party_id).click(function() {
-					alert('poop');
 					var curHash = window.location.hash.split("%%");
 					window.location.hash = curHash[0] +"%%"+ curHash[1] +"%%E"+ party_id
 				});
@@ -76,15 +76,14 @@ function populate_area(area_id, selected_id) {
 			if (selected_id == "ALL" || selected_id.substr(1) == party_id) {
 				genereeri_poliitik(v.nimi, id);
 			}
-		})
-		var length = parties.length,
+		});
+		var length = parties.length;
 		element = null;
 		for (var i = 0; i < length; i++) {
 			element = parties[i];
 			$("#E"+element).removeClass("selected_tab")
 		}
-		$("#E"+parties[$.inArray(selected_id.substr(1), parties)]).addClass("selected_tab");
-		//alert(selected_id+" | "+parties);
+		$("#E"+selected_id.substr(1)).addClass("selected_tab");
 	});
 }
 
@@ -128,8 +127,8 @@ function load_page(tag){
       break;
       case "#kandidaadid":
       document.title = "Kandidaadid";
-      $("#main").load("kandidaadid.html #main");
-      $("#page_name").load("kandidaadid.html #page_name", function(){
+      $("#page_name").load("kandidaadid.html #page_name");
+      $("#main").load("kandidaadid.html #main", function(){
    				populate_area(tag[1], tag[2]);
    				});
       break;

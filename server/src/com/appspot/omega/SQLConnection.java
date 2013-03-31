@@ -2,9 +2,14 @@ package com.appspot.omega;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.appengine.api.rdbms.AppEngineDriver;
 
 import com.google.gson.Gson;
 
@@ -13,7 +18,7 @@ public class SQLConnection {
     Statement stmt = null;
     ResultSet rs = null;
     
-    static private String dbURL = "jdbc:mysql://instance42133.db.xeround.com:7371/appfog";
+    static private String dbURL = "jdbc:google:rdbms://omega-vl-sql/omega-vl";
     static private String username = "appfog";
     static private String password = "562325";
 
@@ -31,11 +36,9 @@ public class SQLConnection {
 			    System.err.println("select failed");
 			}
 			Gson gs = new Gson();
-            KandidaatByRegion[] pk = new KandidaatByRegion[15];
-            int i = 0;
+            ArrayList<KandidaatByRegion> pk = new ArrayList<KandidaatByRegion>();
             while (rs.next()) {
-                pk[i] = new KandidaatByRegion(rs.getInt(1), rs.getString(2) +" "+ rs.getString(3), rs.getInt(4), rs.getString(5));
-                i++;
+                pk.add(new KandidaatByRegion(rs.getInt(1), rs.getString(2) +" "+ rs.getString(3), rs.getInt(4), rs.getString(5)));
             }
             result = gs.toJson(pk);
             
@@ -51,17 +54,16 @@ public class SQLConnection {
     public String execute_piirkond(){
     	String result = null;
     	try {
-			if (stmt.execute("select * from piirkond order by nimi")) {
-			    rs = stmt.getResultSet();
-			} else {
-			    System.err.println("select failed");
-			}
+    		PreparedStatement stmt = conn.prepareStatement("select * from piirkond order by nimi");
+			//if () {
+			    rs = stmt.executeQuery();
+			//} else {
+			//    System.err.println("select failed");
+			//}
 			Gson gs = new Gson();
-            Piirkond[] pk = new Piirkond[15];
-            int i = 0;
+            ArrayList<Piirkond> pk = new ArrayList<Piirkond>();
             while (rs.next()) {
-                pk[i] = new Piirkond(rs.getInt(1), rs.getString(2));
-                i++;
+                pk.add(new Piirkond(rs.getInt(1), rs.getString(2)));
             }
             result = gs.toJson(pk);
             
@@ -76,14 +78,14 @@ public class SQLConnection {
     
 	public Connection create(){
     	try{
-    		Class.forName("com.mysql.jdbc.Driver");
+    		//Class.forName("com.mysql.jdbc.Driver");
+    		DriverManager.registerDriver(new AppEngineDriver());
             conn = DriverManager.getConnection(dbURL, username, password);
-            stmt = conn.createStatement();
     	}
-    	catch (ClassNotFoundException ex) {
+    	/*catch (ClassNotFoundException ex) {
             System.err.println("Failed to load mysql driver");
             System.err.println(ex);
-    	}
+    	}*/
     	catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage()); 
             System.out.println("SQLState: " + ex.getSQLState()); 
