@@ -83,7 +83,10 @@ public class SQLConnection {
 
 			PreparedStatement stmt;
 			try {
-				stmt = conn.prepareStatement("call koik_haaled()");
+				stmt = conn.prepareStatement("select eesnimi, perenimi, erakond.nimi, piirkond.nimi as piirkond, count(kandidaat.id) as haaled " +
+						"from appfog.kandidaat, appfog.isik, appfog.erakond, appfog.piirkond where " +
+						"isik.kandidaat = kandidaat.id and kandidaat.piirkond = piirkond.id and " +
+						"kandidaat.erakond = erakond.id group by kandidaat.id order by haaled desc");
 				rs = stmt.executeQuery();
 
 				while (rs.next()) {
