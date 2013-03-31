@@ -5,10 +5,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import com.google.appengine.api.rdbms.AppEngineDriver;
 
 public class SQLConnection {
 	Connection conn = null;
+	Statement stmt = null;
 	ResultSet rs = null;
 
 	static private String dbURL = "jdbc:google:rdbms://omega-vl-sql:omega-vl/appfog";
@@ -22,8 +25,9 @@ public class SQLConnection {
 
 	public ResultSet execute(String query){
 		try {
-			PreparedStatement stmt = conn.prepareStatement(query);
-			rs = stmt.executeQuery();
+			Statement stmt = conn.createStatement();
+			stmt.execute(query);
+			rs = stmt.getResultSet();
 		} 
 		catch (SQLException ex) {
 			System.out.println("SQLException: " + ex.getMessage()); 
@@ -35,14 +39,9 @@ public class SQLConnection {
 
 	public Connection create(){
 		try{
-			//Class.forName("com.mysql.jdbc.Driver");
 			DriverManager.registerDriver(new AppEngineDriver());
 			conn = DriverManager.getConnection(dbURL, username, password);
 		}
-		/*catch (ClassNotFoundException ex) {
-            System.err.println("Failed to load mysql driver");
-            System.err.println(ex);
-    	}*/
 		catch (SQLException ex) {
 			System.out.println("SQLException: " + ex.getMessage()); 
 			System.out.println("SQLState: " + ex.getSQLState()); 
