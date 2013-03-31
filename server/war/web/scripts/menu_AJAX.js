@@ -161,7 +161,7 @@ function load_page(tag){
       case "#statistika":
       document.title = "Statistika";
       $("#main").load("statistika.html #statistika", function(){
-   				data_from_json("piirkond");
+   				data_from_json(1);
    				});
       $("#page_name").load("statistika.html #page_name");
 		

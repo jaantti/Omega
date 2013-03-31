@@ -1,14 +1,17 @@
 package com.appspot.omega;
 
 public class HaaledErakondPiirkond {
-	String nimi;
+	String eesnimi;
+	String perenimi;
 	int haaled;
-	
-	public HaaledErakondPiirkond(String nimi, int haaled) {
+	public HaaledErakondPiirkond(String eesnimi, String perenimi, int haaled) {
 		super();
-		this.nimi = nimi;
+		this.eesnimi = eesnimi;
+		this.perenimi = perenimi;
 		this.haaled = haaled;
 	}
+	
+	
 	
 	
 }
