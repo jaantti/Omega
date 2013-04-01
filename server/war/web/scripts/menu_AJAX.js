@@ -1,4 +1,14 @@
 
+var options, a;
+jQuery(function(){
+   options = {
+		   //lookup: ['January', 'February', 'March', 'April', 'May'],
+		   serviceUrl: '/SearchServlet',
+		   onSelect: function(value) {window.location.hash = "#K"+value.data}
+   };
+   a = $('.search').autocomplete(options);
+});
+
 var logged_in = 0;
 
 function login_toggle(){
@@ -49,6 +59,7 @@ function populate_area(area_id, selected_id) {
 	//area_id = area_id.substr(1);
 	//selected_id = selected_id.substr(1);
 	$.getJSON('/PartyServlet?piirkond_id='+area_id.substr(1), function(data) {
+		$("#main").show();
 		$("#main h2").text($("#"+window.location.hash.split("%%")[1]).text());
 		if (selected_id == undefined) {selected_id = "ALL"};
 		var parties = ["ALL"];
@@ -82,6 +93,7 @@ function populate_area(area_id, selected_id) {
 			$("#E"+element).removeClass("selected_tab")
 		}
 		$("#E"+selected_id.substr(1)).addClass("selected_tab");
+		$(".loading_img").remove();
 	});
 }
 
@@ -127,6 +139,10 @@ function load_page(tag){
       document.title = "Kandidaadid";
       $("#page_name").load("kandidaadid.html #page_name");
       $("#main").load("kandidaadid.html #main", function(){
+    	        $("#main").hide();
+    	        $('<img class="loading_img" src="loading_transparent.gif">').load(function() {
+    	    		$(this).width(48).height(48).prependTo($("#footer"));
+    	    	});
    				populate_area(tag[1], tag[2]);
    				});
       break;
