@@ -89,11 +89,11 @@
           <option value="Sinised">Sinised</option>
           <option value="Valged">Valged</option>
         </select>
-        <input name="stat_sort" type="button" value="Sorteeri" onClick="BindEvent();"/>
+        <input name="stat_sort" type="button" value="Sorteeri" onClick=""/>
         <input name="stat_refresh" type="button" value="Värskenda tulemusi"/><br />
-        <input name="stat_kandidaat" type="text" value="Otsi kindlat kandidaati" onfocus="if
+        <input id="stat_kandidaat" name="stat_kandidaat" type="text" value="Otsi kindlat kandidaati" onfocus="if
 		  (this.value==this.defaultValue) this.value='';"/>
-        <input name="stat_otsi" type="button" value="Otsi" onclick="" /><br />
+        <input id="stat_otsi" name="stat_otsi" type="button" value="Otsi" onclick="" /><br />
         <p></p>
         </div>
         <div id ="table_area">

@@ -44,7 +44,7 @@ public class HaaledServlet extends HttpServlet {
 			out.print(jsonOut);
 		}
 
-		if (list.contains("erakond")){
+		if (list.contains("erakond") && !list.contains("piirkond")){
 			String jsonOut;
 			ResultSet rs = conn.execute("call appfog.kandidaadid_erakonnas_haaled('"+ request.getParameter("erakond")+"')");
 			
@@ -60,7 +60,7 @@ public class HaaledServlet extends HttpServlet {
 			jsonOut = gs.toJson(haaled);
 			out.print(jsonOut);
 		}
-		if (list.contains("piirkond")){
+		if (list.contains("piirkond") && !list.contains("erakond")){
 			String jsonOut;
 			ResultSet rs = conn.execute("call appfog.kandidaadid_piirkonnas_haaled('"+ request.getParameter("piirkond")+"')");
 			Gson gs = new Gson();
@@ -84,6 +84,22 @@ public class HaaledServlet extends HttpServlet {
 			try {
 				while (rs.next()) {
 					haaled.add(new HaaledErakondPiirkond(rs.getString(1), rs.getString(2), rs.getInt(3)));
+				}				
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			jsonOut = gs.toJson(haaled);
+			out.print(jsonOut);
+		}
+		if (list.contains("eesnimi")){
+			String jsonOut;
+			ResultSet rs = conn.execute("call kandidaadi_haaled('"+ 
+			request.getParameter("eesnimi") +"','" +request.getParameter("perenimi") +"')");
+			Gson gs = new Gson();
+			ArrayList<HaaledKandidaat> haaled = new ArrayList<HaaledKandidaat>();
+			try {
+				while (rs.next()) {
+					haaled.add(new HaaledKandidaat(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
 				}				
 			} catch (SQLException e1) {
 				e1.printStackTrace();

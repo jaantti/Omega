@@ -122,6 +122,7 @@ $(document).ready(function(){
    $("#lisa_kandidaadina").click(function() {window.location.hash = "#lisa_kandidaadina"});
    $("#statistika").click(function() {window.location.hash = "#statistika"});
    $("#abi").click(function() {window.location.hash = "#abi"});
+   $('#stat_otsi').click(function() {});
 
 });
 
