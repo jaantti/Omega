@@ -51,15 +51,15 @@ function data_from_json(tyyp){
 	if (tyyp == 3) json_path += 'erakond=' + elemToBind2.value;
 	if (tyyp == 4) json_path += 'piirkond=' + elemToBind.value + '&' + 'erakond=' + elemToBind2.value;
 	$.getJSON(json_path, function(data) {
-
+		console.log(data);
 		tbl_header = "";
-		tbody=[];
+		
 		var h_eesnimi = '<td id="t_head_0" class ="header">Nimi</td>';
 		var h_perenimi = '<td id="t_head_1" class ="header">Nimi</td>';
 		var h_erakond = '<td id="t_head_2" class ="header">Erakond</td>';
 		var h_piirkond = '<td id="t_head_2" class ="header">Piirkond</td>';
 		var h_haali = '<td id="t_head_3" class ="header">H‰‰li</td>';
-		if (tyyp = 1){
+		if (tyyp == 1){
 
 			var i = 0
 			$.each(data, function(k , v) {
@@ -78,10 +78,10 @@ function data_from_json(tyyp){
 		if (tyyp == 3){
 			var i = 0;
 			$.each(data, function(k , v) {
-				tbody[i].push([]);
+				tbody.push([]);
 				tbody[i].push(v.eesnimi);
 				tbody[i].push(v.perenimi);
-				tbody[i].push(v.nimi);
+				tbody[i].push(v.piirkon);
 				tbody[i].push(v.haaled);
 				i++;
 			})
@@ -92,10 +92,10 @@ function data_from_json(tyyp){
 		if (tyyp == 2){
 			var i = 0;
 			$.each(data, function(k , v) {
-				tbody[i].push([]);
+				tbody.push([]);
 				tbody[i].push(v.eesnimi);
 				tbody[i].push(v.perenimi);
-				tbody[i].push(v.nimi);
+				tbody[i].push(v.erakond);
 				tbody[i].push(v.haaled);
 			})
 			tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_erakond+h_haali+"</tr>";
