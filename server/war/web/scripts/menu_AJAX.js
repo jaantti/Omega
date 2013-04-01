@@ -25,13 +25,11 @@ function update_login(){
 
 function lae_poliitik(tag) {
 	
-	id = tag.substring(1);
-	$.getJSON('data/candidate.json', function(data) {
+	id = tag.substring(2);
+	$.getJSON('/CandidateServlet?id='+id, function(data) {
       $.each(data, function(k, v) {
-      	if (k == "id" && v == "1234567890") { //Static id to load the provided data file.
-      		$("#k_info h2").text(data.person.name);
-      		$("#k_info h3").text(data.region.name +", "+ data.party.name);
-      	}
+      	$("#k_info h2").text(v.nimi);
+      	$("#k_info h3").text(v.piirkond.nimi +", "+ v.erakond.nimi);
 		})
 	});
 }

@@ -25,6 +25,14 @@
 		<url-pattern>/PartyServlet</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>CandidateServlet</servlet-name>
+		<servlet-class>com.appspot.omega.CandidateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CandidateServlet</servlet-name>
+		<url-pattern>/CandidateServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>HaaledServlet</servlet-name>
 		<servlet-class>com.appspot.omega.HaaledServlet</servlet-class>
 	</servlet>
