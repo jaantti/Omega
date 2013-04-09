@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd ">
 
-  <!-- Servlets --><servlet>
-  	<servlet-name>hello</servlet-name>
-  	<servlet-class>com.appspot.omega.HelloWorld</servlet-class>
-</servlet>
-	<servlet-mapping>
-		<servlet-name>hello</servlet-name>
-		<url-pattern>/hello</url-pattern>
-	</servlet-mapping>
+  <!-- Servlets -->
 	<servlet>
 		<servlet-name>RegionServlet</servlet-name>
 		<servlet-class>com.appspot.omega.RegionServlet</servlet-class>
@@ -55,6 +48,22 @@
 	<servlet-mapping>
 		<servlet-name>loginServlet</servlet-name>
 		<url-pattern>/loginServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AuthServlet</servlet-name>
+		<servlet-class>com.appspot.omega.AuthServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthServlet</servlet-name>
+		<url-pattern>/AuthServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AuthResponse</servlet-name>
+		<servlet-class>com.appspot.omega.AuthResponse</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthResponse</servlet-name>
+		<url-pattern>/AuthResponse</url-pattern>
 	</servlet-mapping>
 
 	<!-- Default page to serve -->

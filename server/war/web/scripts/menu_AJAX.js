@@ -10,6 +10,8 @@ jQuery(function(){
 });
 
 var logged_in = 0;
+var user;
+var user_id;
 
 function login_toggle(){
    if (logged_in == 1) {
