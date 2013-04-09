@@ -23,6 +23,10 @@
 img{
 	width:100%;
 }
+.disclamer{
+	font: bold 20px Arial,Helvetica,Sans-serif;
+	color:red;
+}
 
 .loading_img{
 	margin:auto; /* Required */
