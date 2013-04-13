@@ -16,6 +16,7 @@ local.properties
 .settings/
 .loadpath
 server/qwt-unitCache/
+/server/war/WEB-INF/classes
 # External tool builders
 .externalToolBuilders/
 
