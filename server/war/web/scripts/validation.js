@@ -1,4 +1,83 @@
+function validateF () {
+	var form = $("#lisa_kandidaadina");
+	var name = $("#kandidaat_nimi");
+	var id = $("#kandidaat_id");
+	var party = $("#kandidaat_erakond");
+	var area = $("#kandidaat_piirkond");
+	var adr = $("#kandidaat_aadress");
+	var phone = $("#kandidaat_telefon");
+	var email = $("#kandidaat_epost");
+	var letters = /[A-Za-z -']$/;
+	var idnumbers =  /^\d{11}$/;
+	var alphanumeric = /^[0-9a-zA-Z]+$/;
+	var numbers =  /^[0-9]+$/;
+	var validemail =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	$("#submit_kandidaat").click(function(){
+		var error = 0;
+		if(!name.val().match(letters)){
+			name.addClass("error");
+			//nameInfo.text("We want names with more than 3 letters!");
+			//nameInfo.addClass("error");
+			error++;
+			return false;
+		}
+		else if (!id.val().match(idnumbers)){
+			error++;
+			return false;
+		}
+		else if (party.val()== "Default"){
+			error++;
+			return false;
+		}
+		else if (area.val()== "Default"){
+			error ++;
+			return false;
+		}
+		else if (!adr.val().match(alphanumeric)){
+			alert("error");
+			error ++;
+			return false;
+		}
+		else if (!phone.val().match(numbers)){
+			alert("telefoninr vale");
+			error ++;
+			return false;
+		}
+		else if (!email.val().match(validemail)){
+			alert("emailikene");
+			error ++;
+			return false;
+		}
+		else{
+			var str = name.serialize();
+			var str1 = id.serialize();
+			var str2 = party.serialize();
+			var str3 = area.serialize();
+			var str4 = adr.serialize();
+			var str5 = phone.serialize();
+			var str6 = email.serialize();
+		}
+		if (error >= 1){
+			return false;
+		}
+		else{
+			$.ajax({
+				type: "post",
+				url: "/RegisterServlet",
+				data: {"kandidaat_nimi": str, "kandidaat_id": str1, "kandidaat_erakond": str2, "kandidaat_piirkond":str3, "kandidaat_aadress": str4, "kandidaat_telefon": str5, "kandidaat_epost": str6},
+				success: function(){
 
+					//clear_form_elements("#lisa_kandidaadina");
+					alert("success");
+				}			
+			});
+			
+		}
+	});
+}
+
+	
+	
 function validate_combobox(combobox){  
 	if(combobox.selectedIndex == 0){
 		$(combobox).addClass("invalid_input");
@@ -14,11 +93,11 @@ function validate(text_box, re){
 	var to_test = text_box.value;
 	if (re.test(to_test)){
 		$(text_box).removeClass("invalid_input");
-		return false;
+		return true;
 	}
 	else{
 		$(text_box).addClass("invalid_input");
-		return true;
+		return false;
 	}
 }
 
@@ -47,74 +126,18 @@ function validateEmail(text_box){
 	return validate(text_box, re);
 }
 
-function ready_kandidaat_form(){
-	
-	$("#kandidaat_nimi").blur(function(){
-		validateText(this);
+function clear_form_elements(ele) {
+	$(ele).find(':input').each(function() {
+		switch(this.type) {
+		case "kandidaat_nimi":
+		case "kandidaat_id":
+		case "kandidaat_aadress":
+		case "kandidaat_telefon":
+		case "kandidaat_epost":
+		case "kandidaat_erakond":
+			this.checked = false;
+		case "kandidaat_piirkond":
+			this.checked = false;
+		}
 	});
-	
-	$("#kandidaat_id").blur(function(){
-		validateIsikukood(this);
-	});
-	
-	$("#kandidaat_erakond").blur(function(){
-		validate_combobox(this);
-	});
-	
-	$("#kandidaat_piirkond").blur(function(){
-		validate_combobox(this);
-	});
-	
-	$("#kandidaat_aadress").blur(function(){
-		validateAlphanumeric(this);
-	});
-	
-	$("#kandidaat_telefon").blur(function(){
-		validateNumeric(this);
-	});
-	
-	$("#kandidaat_epost").blur(function(){
-		validateEmail(this);
-	});
-	
-	$("#kandidaat_pilt").blur(function(){
-	});
-}
-
-function validateForm(){
-    // Set error catcher
-    var error = 0;
-	// Check name
-    if(!validateName('kandidaat_nimi')){
-        document.getElementById('kandidaat_nimiError').style.display = "block";
-        error++;
-    }
-	if(!kandidaat_id_validation('kandidaat_id')){
-		document.getElementById('kandidaat_idError').style.display = "block";
-        error++;
-    }
-	if(!erakondselect('kandidaat_erakond')){
-        document.getElementById('kandidaat_erakondError').style.display = "block";
-        error++;
-    }
-	if(!piirkondselect('kandidaat_piirkond')){
-        document.getElementById('kandidaat_piirkondError').style.display = "block";
-        error++;
-    }
-	if(!alphanumeric('kandidaat_aadress')){
-		document.getElementById('kandidaat_aadressError').style.display = "block";
-        error++;
-	}
-	if(!allnumeric('kandidaat_telefon')){
-		document.getElementById('kandidaat_telefonError').style.display = "block";
-        error++;
-	}
-	if(!ValidateEmail('kandidaat_epost')){
-        document.getElementById('kandidaat_epostError').style.display = "block";
-        error++;
-    }
-    // Don't submit form if there are errors
-	if(error > 0){
-        return false;
-    } 
 }
