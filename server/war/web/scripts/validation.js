@@ -10,7 +10,7 @@ function validateF () {
 	var email = $("#kandidaat_epost");
 	var letters = /[A-Za-z -']$/;
 	var idnumbers =  /^\d{11}$/;
-	var alphanumeric = /^[0-9a-zA-Z]+$/;
+	var alphanumeric = /^[0-9a-zA-Z ]+$/;
 	var numbers =  /^[0-9]+$/;
 	var validemail =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	$("#submit_kandidaat").click(function(){

@@ -85,6 +85,7 @@ function data_from_json(tyyp){
 	}
 	else{
 		var json_path = '/HaaledServlet?';
+		
 
 		if (tyyp == 1) json_path += 'koik=1';
 		if (tyyp == 2) json_path += 'piirkond=' + elemToBind.value;
