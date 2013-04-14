@@ -115,6 +115,7 @@ function get_areas(){
 $(document).ready(function(){
 	get_areas();
 	update_login();
+	offline_ready();
    $("#logi_valja").click(function() {login_toggle()});
    $("#logi_sisse").click(function() {login_toggle()});
    $("#index").click(function() {window.location.hash = ""});
@@ -218,4 +219,12 @@ window.onload = function() {
    initializeStateFromURL();
    setInterval(initializeStateFromURL, 100);
 
+}
+function offline_ready(){
+	$.getJSON('/HaaledServlet?koik=1', function(data) {
+		localStorage.koik=JSON.stringify(data)
+		console.log(data)
+	});
+
+	
 }

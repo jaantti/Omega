@@ -11,8 +11,8 @@ function BindEvent(){
 	elemToBind.onchange = function () {sleep(1000)}
 	elemToBind2.onchange = function () {sleep(1000)}
 	$('#stat_otsi').click(function() {kartulivott()});
-	
-	
+
+
 }
 
 function kartulivott(){
@@ -49,83 +49,123 @@ function getSel(){
 
 function data_from_json(tyyp){
 	tbody = [];
-	var json_path = '/HaaledServlet?';
-	if (tyyp == 1) json_path += 'koik=1';
-	if (tyyp == 2) json_path += 'piirkond=' + elemToBind.value;
-	if (tyyp == 3) json_path += 'erakond=' + elemToBind2.value;
-	if (tyyp == 4) json_path += 'piirkond=' + elemToBind.value + '&' + 'erakond=' + elemToBind2.value;
-	if (tyyp == 5) json_path += 'eesnimi=' + kandidaat_nimi[0] + '&' + 'perenimi=' + kandidaat_nimi[1];
-	kandidaat = null;
-	$.getJSON(json_path, function(data) {
-		console.log(data);
+
+	if (!navigator.onLine){
+
 		tbl_header = "";
-		
+		kandidaat = null;
 		var h_eesnimi = '<td id="t_head_0" class ="header">Nimi</td>';
 		var h_perenimi = '<td id="t_head_1" class ="header">Nimi</td>';
 		var h_erakond = '<td id="t_head_2" class ="header">Erakond</td>';
 		var h_piirkond = '<td id="t_head_3" class ="header">Piirkond</td>';
 		var h_haali = '<td id="t_head_4" class ="header">H‰‰li</td>';
-		if (tyyp == 1 || tyyp == 5){
+		console.log(localStorage.koik);
+		alert(localStorage.koik);
+		var data = $.parseJSON(localStorage.koik);
+		//var data = localStorage.koik;
+		var i = 0;
+		$.each(data, function(k , v) {
+			tbody.push([]);
+			tbody[i].push(v.eesnimi);
+			tbody[i].push(v.perenimi);
+			tbody[i].push(v.erakond);
+			tbody[i].push(v.piirkond);
+			tbody[i].push(v.haaled);
+			i++;
+		});				
 
-			var i = 0
-			$.each(data, function(k , v) {
-				tbody.push([]);
-				tbody[i].push(v.eesnimi);
-				tbody[i].push(v.perenimi);
-				tbody[i].push(v.erakond);
-				tbody[i].push(v.piirkond);
-				tbody[i].push(v.haaled);
-				i++;
-			})				
+		tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_erakond+h_piirkond+h_haali+"</tr>";
+		console.log(tbody);
 
-			tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_erakond+h_piirkond+h_haali+"</tr>";
-			console.log(tbody);
-		}	
-		if (tyyp == 3){
-			var i = 0;
-			$.each(data, function(k , v) {
-				tbody.push([]);
-				tbody[i].push(v.eesnimi);
-				tbody[i].push(v.perenimi);
-				tbody[i].push(v.piirkond);
-				tbody[i].push(v.haaled);
-				i++;
-			})
-
-			tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_piirkond+h_haali+"</tr>";
-			console.log(tbody)
-		}
-		if (tyyp == 2){
-			var i = 0;
-			$.each(data, function(k , v) {
-				tbody.push([]);
-				tbody[i].push(v.eesnimi);
-				tbody[i].push(v.perenimi);
-				tbody[i].push(v.erakond);
-				tbody[i].push(v.haaled);
-			})
-			tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_erakond+h_haali+"</tr>";
-			console.log(tbody);
-		}
-		if (tyyp == 4){
-
-			var i = 0
-			$.each(data, function(k , v) {
-				tbody.push([]);
-				tbody[i].push(v.eesnimi);
-				tbody[i].push(v.perenimi);
-				tbody[i].push(v.haaled);
-				i++;
-			})				
-
-			tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_haali+"</tr>";
-			console.log(tbody);
-		}
 		t_body = tbody;
 		populate_table(tbl_header, t_body);
 
 		BindEvent();
-	});
+
+	}
+	else{
+		var json_path = '/HaaledServlet?';
+
+		if (tyyp == 1) json_path += 'koik=1';
+		if (tyyp == 2) json_path += 'piirkond=' + elemToBind.value;
+		if (tyyp == 3) json_path += 'erakond=' + elemToBind2.value;
+		if (tyyp == 4) json_path += 'piirkond=' + elemToBind.value + '&' + 'erakond=' + elemToBind2.value;
+		if (tyyp == 5) json_path += 'eesnimi=' + kandidaat_nimi[0] + '&' + 'perenimi=' + kandidaat_nimi[1];
+
+
+		kandidaat = null;
+		$.getJSON(json_path, function(data) {
+			console.log(data);
+			tbl_header = "";
+
+			var h_eesnimi = '<td id="t_head_0" class ="header">Nimi</td>';
+			var h_perenimi = '<td id="t_head_1" class ="header">Nimi</td>';
+			var h_erakond = '<td id="t_head_2" class ="header">Erakond</td>';
+			var h_piirkond = '<td id="t_head_3" class ="header">Piirkond</td>';
+			var h_haali = '<td id="t_head_4" class ="header">H‰‰li</td>';
+			if (tyyp == 1 || tyyp == 5){
+
+				var i = 0
+				$.each(data, function(k , v) {
+					tbody.push([]);
+					tbody[i].push(v.eesnimi);
+					tbody[i].push(v.perenimi);
+					tbody[i].push(v.erakond);
+					tbody[i].push(v.piirkond);
+					tbody[i].push(v.haaled);
+					i++;
+				})				
+
+				tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_erakond+h_piirkond+h_haali+"</tr>";
+				console.log(tbody);
+			}	
+			if (tyyp == 3){
+				var i = 0;
+				$.each(data, function(k , v) {
+					tbody.push([]);
+					tbody[i].push(v.eesnimi);
+					tbody[i].push(v.perenimi);
+					tbody[i].push(v.piirkond);
+					tbody[i].push(v.haaled);
+					i++;
+				})
+
+				tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_piirkond+h_haali+"</tr>";
+				console.log(tbody)
+			}
+			if (tyyp == 2){
+				var i = 0;
+				$.each(data, function(k , v) {
+					tbody.push([]);
+					tbody[i].push(v.eesnimi);
+					tbody[i].push(v.perenimi);
+					tbody[i].push(v.erakond);
+					tbody[i].push(v.haaled);
+				})
+				tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_erakond+h_haali+"</tr>";
+				console.log(tbody);
+			}
+			if (tyyp == 4){
+
+				var i = 0
+				$.each(data, function(k , v) {
+					tbody.push([]);
+					tbody[i].push(v.eesnimi);
+					tbody[i].push(v.perenimi);
+					tbody[i].push(v.haaled);
+					i++;
+				})				
+
+				tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_haali+"</tr>";
+				console.log(tbody);
+			}
+			t_body = tbody;
+			populate_table(tbl_header, t_body);
+
+			BindEvent();
+
+		});
+	}
 }
 function populate_table(table_header, table_body){
 	$("#my_table").remove();
@@ -189,7 +229,7 @@ function populate_table(table_header, table_body){
 	$("#t_head_3").click(function() {
 		var a = 3;
 		if (tbody[0].length == 4) a = 2
-		
+
 		if (t_head_status[a] == 0){
 			sort_table(a,0);
 			t_head_status[a] = 1;
@@ -223,7 +263,7 @@ function populate_table(table_header, table_body){
 
 }
 function sort_table(column, direction){
-	
+
 	console.log(t_body[0].length);
 	for (var j = 0; j < t_body.length; j++){
 		for(var i = 0; i < t_body.length-1; i++){
@@ -261,8 +301,8 @@ function loadingImage(path, width, height, target) {
 
 }
 function testingLocalstorage(){
-	
+
 	localStorage.derp=localStorage.derp+"herp";
 	console.log(localStorage.derp);
-		
+
 }
