@@ -3,14 +3,12 @@ package com.appspot.omega;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -25,8 +23,8 @@ public class AuthResponse extends HttpServlet{
 	private static final long serialVersionUID = -4547145543576335113L;
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String code =  request.getParameter("code");
-		String access_token = request.getParameter("access_token");
+		String code = request.getParameter("code");
+		System.out.println("At AuthResponse");
 		if (code != null) {
 			
 	        try {
@@ -91,6 +89,7 @@ public class AuthResponse extends HttpServlet{
 	        					"('" + isik.id + "', '" + isik.given_name + " " + isik.family_name + "'," +
 	        							" '" + isik.email + "', " + "-1);");
 	        		}
+	        		conn.close();
 	                response.sendRedirect("http://localhost:8888/LoginServlet?google_id=" + isik.id + "&login=yes");
 	                
 	            } else {
@@ -104,6 +103,9 @@ public class AuthResponse extends HttpServlet{
 	        	e.printStackTrace();
 	            // ...
 	        }
+		}
+		else {
+			response.sendRedirect("http://localhost:8888/LoginServlet?google_id=-1&login=yes");
 		}
 	}
 }

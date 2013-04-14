@@ -10,15 +10,16 @@ jQuery(function(){
 });
 
 var logged_in = 0;
-var user;
-var user_id;
+var google_id = '-1';
 
 function login_toggle(){
+	
    if (logged_in == 1) {
-      logged_in = 0
+      logged_in = 0;
+      google_id = '-1';
    }
    else {
-      logged_in = 1
+	   window.location = '/LoginServlet';
    }
    update_login();
    load_page(window.location.hash);
@@ -189,6 +190,14 @@ function load_page(tag){
       document.title = "Abi hääletamisel";
       $("#main").load("abi.html #main");
       $("#page_name").load("abi.html #page_name");
+      case "#loginredirect":
+      google_id = tag[1];
+      if (google_id != "-1") {
+          logged_in = 1;
+      }
+      update_login();
+      window.location.hash = "kasutajainfo";
+      break;
    	break;
    	default:
    	document.title = "Kandidaadi info";
