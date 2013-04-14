@@ -60,7 +60,7 @@ function data_from_json(tyyp){
 		var h_piirkond = '<td id="t_head_3" class ="header">Piirkond</td>';
 		var h_haali = '<td id="t_head_4" class ="header">H‰‰li</td>';
 		console.log(localStorage.koik);
-		alert(localStorage.koik);
+		
 		var data = $.parseJSON(localStorage.koik);
 		//var data = localStorage.koik;
 		var i = 0;
