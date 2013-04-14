@@ -171,7 +171,7 @@ function load_page(tag){
          	document.title = "Kandidaadina lisamine";
             $("#page_name").load("lisa_kandidaadina.html #page_name");
             $("#main").load("lisa_kandidaadina.html #lisa_kandidaadina", function(){
-   				ready_kandidaat_form();
+   				validateF();
    				});
          }
       break;

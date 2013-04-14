@@ -1,6 +1,7 @@
 function validateF () {
 	var form = $("#lisa_kandidaadina");
-	var name = $("#kandidaat_nimi");
+	var firstname = $("#kandidaat_eesnimi");
+	var lastname = $("#kandidaat_perenimi");	
 	var id = $("#kandidaat_id");
 	var party = $("#kandidaat_erakond");
 	var area = $("#kandidaat_piirkond");
@@ -14,8 +15,15 @@ function validateF () {
 	var validemail =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	$("#submit_kandidaat").click(function(){
 		var error = 0;
-		if(!name.val().match(letters)){
-			name.addClass("error");
+		if(!firstname.val().match(letters)){
+			firstname.addClass("error");
+			//nameInfo.text("We want names with more than 3 letters!");
+			//nameInfo.addClass("error");
+			error++;
+			return false;
+		}
+		else if (!lastname.val().match(letters)){
+			lastname.addClass("error");
 			//nameInfo.text("We want names with more than 3 letters!");
 			//nameInfo.addClass("error");
 			error++;
@@ -49,7 +57,8 @@ function validateF () {
 			return false;
 		}
 		else{
-			var str = name.serialize();
+			var str = firstname.serialize();
+			var stra = lastname.serialize();
 			var str1 = id.serialize();
 			var str2 = party.serialize();
 			var str3 = area.serialize();
@@ -61,23 +70,24 @@ function validateF () {
 			return false;
 		}
 		else{
+			alert("Sain postini" + name );
 			$.ajax({
 				type: "post",
 				url: "/RegisterServlet",
-				data: {"kandidaat_nimi": str, "kandidaat_id": str1, "kandidaat_erakond": str2, "kandidaat_piirkond":str3, "kandidaat_aadress": str4, "kandidaat_telefon": str5, "kandidaat_epost": str6},
+				data: {"kandidaat_eesnimi": str, "kandidaat_perenimi": stra, "kandidaat_id": str1, "kandidaat_erakond": str2, "kandidaat_piirkond":str3, "kandidaat_aadress": str4, "kandidaat_telefon": str5, "kandidaat_epost": str6},
 				success: function(){
 
 					//clear_form_elements("#lisa_kandidaadina");
 					alert("success");
 				}			
 			});
-			
+
 		}
 	});
 }
 
-	
-	
+
+
 function validate_combobox(combobox){  
 	if(combobox.selectedIndex == 0){
 		$(combobox).addClass("invalid_input");
