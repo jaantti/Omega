@@ -29,16 +29,33 @@ function update_login(){
 	if (logged_in == 1) {
 		$("#logi_sisse").hide();
 		$("#logi_valja").show();
+		$("#vali_button").show();
+		$("#vali_hoiatus").hide();
 	}
 	else {
 		$("#logi_valja").hide();
 		$("#logi_sisse").show();
+		$("#vali_button").hide();
+		$("#vali_hoiatus").show();
 	}
 }
 
 function lae_poliitik(tag) {
-
+	if (logged_in == 0) {
+		$("#vali_button").hide();
+		$("#vali_hoiatus").show();
+	}
+	else {
+		$("#vali_button").show();
+		$("#vali_hoiatus").hide();
+	}
+	
 	id = tag.substring(2);
+	if (haal == id) {
+		$("#vali_button").hide();
+		$("#vali_hoiatus").show();
+		$("#vali_hoiatus").text("Tänan hääle eest!");
+	}
 	$.getJSON('/CandidateServlet?id='+id, function(data) {
 		$.each(data, function(k, v) {
 			$("#k_info h2").text(v.nimi);
@@ -183,7 +200,7 @@ $(document).ready(function(){
 	$("#index").click(function() {window.location.hash = ""});
 	$("#kandidaadid_piirkond1").click(function() {window.location.hash = "#kandidaadid_piirkond1"});
 	$("#kandidaadid_piirkond2").click(function() {window.location.hash = "#kandidaadid_piirkond2"});
-	$("#kasutajainfo").click(function() {window.location.hash = "#kasutajainfo"});
+	$("#kasutajainfo").click(function() {window.location.hash = "#kasutajainfo%%"+valija_id});
 	$("#lisa_kandidaadina").click(function() {window.location.hash = "#lisa_kandidaadina"});
 	$("#statistika").click(function() {window.location.hash = "#statistika"});
 	$("#abi").click(function() {window.location.hash = "#abi"});
@@ -220,8 +237,10 @@ function load_page(tag){
 		}
 		else {
 			document.title = "Valija info";
-			$("#main").load("valija_info.html #valija_info");
 			$("#page_name").load("valija_info.html #page_name");
+			$("#main").load("valija_info.html #valija_info", function(){
+				kasutajainfo(tag[1])
+			});
 		}
 		break;
 	case "#lisa_kandidaadina":
@@ -258,7 +277,7 @@ function load_page(tag){
 			logged_in = 1;
 		}
 		update_login();
-		window.location.hash = "kasutajainfo";
+		window.location.hash = "kasutajainfo%%"+google_id;
 		
 		break;
 	default:

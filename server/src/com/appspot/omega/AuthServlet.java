@@ -30,7 +30,14 @@ public class AuthServlet extends HttpServlet{
 			System.out.println("log in newfag");
 		}
 		else {
-			System.out.println("vana kala");
+			String vote = request.getParameter("vote");
+			String tuhista = request.getParameter("tuhista");
+			if (vote != null) {
+				conn.execute("update isik set kandidaat = "+ vote +" where google_id = '"+ google_id +"';");
+			}
+			else if (tuhista != null) {
+				conn.execute("update isik set kandidaat=-1 where google_id = '"+ google_id +"';");
+			}
 		}
 	}
 }

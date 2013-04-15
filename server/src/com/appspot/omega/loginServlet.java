@@ -18,9 +18,7 @@ public class loginServlet extends HttpServlet {
 		
 		String google_id = request.getParameter("google_id");
 		String login = request.getParameter("login");
-		
-		System.out.println("LoginServlet responding! Google_id = " + google_id);
-		
+				
 		if (login != null && login.equals("yes")) {
 			response.sendRedirect("/web/index.html#loginredirect%%"+google_id);
 		}
@@ -32,8 +30,8 @@ public class loginServlet extends HttpServlet {
 					//"redirect_uri=http://www.omega-vl.appspot.com/AuthResponse&" +
 					"redirect_uri=http://localhost:8888/AuthResponse&" +
 					//"client_id=215240851949.apps.googleusercontent.com&" +
-					"client_id=215240851949-4767gcfso0aj09bpdto19bgk9ujg6p2s.apps.googleusercontent.com&" + 
-					"approval_prompt=force"
+					"client_id=215240851949-4767gcfso0aj09bpdto19bgk9ujg6p2s.apps.googleusercontent.com&" 
+					//+"approval_prompt=force"
 					);
 		}
 	}

@@ -24,7 +24,6 @@ public class AuthResponse extends HttpServlet{
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String code = request.getParameter("code");
-		System.out.println("At AuthResponse");
 		if (code != null) {
 			
 	        try {

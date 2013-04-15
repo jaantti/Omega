@@ -78,6 +78,14 @@
 		<servlet-name>AuthResponse</servlet-name>
 		<url-pattern>/AuthResponse</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>IsikServlet</servlet-name>
+		<servlet-class>com.appspot.omega.IsikServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>IsikServlet</servlet-name>
+		<url-pattern>/IsikServlet</url-pattern>
+	</servlet-mapping>
 
 	<!-- Default page to serve -->
   <welcome-file-list>
