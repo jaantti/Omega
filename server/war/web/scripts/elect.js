@@ -25,6 +25,7 @@ function vote(valija_id){
 			$("#vali_button").hide();
 			$("#vali_hoiatus").text("Tänan hääle eest!");
 			$("#vali_hoiatus").show();
+			haal = window.location.hash.substr(2);
 		})
 	}
 }
@@ -33,6 +34,7 @@ function tuhista_haal(google_id){
 	if (logged_in == 1 && valija_id != '-1'){
 		$.get('/AuthServlet?google_id='+valija_id+'&tuhista=yes', function(){
 			$("#kelle_poolt").text("Teie hääl on veel andmata.");
+			haal = -1;
 		});
 	}
 }
