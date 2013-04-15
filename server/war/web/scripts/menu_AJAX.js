@@ -264,7 +264,6 @@ function load_page(tag){
 		});
 		$("#page_name").load("statistika.html #page_name");
 
-
 		break;
 	case "#abi":
 		document.title = "Abi hääletamisel";
