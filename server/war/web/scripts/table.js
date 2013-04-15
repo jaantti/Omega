@@ -58,7 +58,7 @@ function data_from_json(tyyp){
 		var h_perenimi = '<td id="t_head_1" class ="header">Nimi</td>';
 		var h_erakond = '<td id="t_head_2" class ="header">Erakond</td>';
 		var h_piirkond = '<td id="t_head_3" class ="header">Piirkond</td>';
-		var h_haali = '<td id="t_head_4" class ="header">H‰‰li</td>';
+		var h_haali = '<td id="t_head_4" class ="header">H√§√§li</td>';
 		console.log(localStorage.koik);
 		
 		var data = $.parseJSON(localStorage.koik);
@@ -103,7 +103,7 @@ function data_from_json(tyyp){
 			var h_perenimi = '<td id="t_head_1" class ="header">Nimi</td>';
 			var h_erakond = '<td id="t_head_2" class ="header">Erakond</td>';
 			var h_piirkond = '<td id="t_head_3" class ="header">Piirkond</td>';
-			var h_haali = '<td id="t_head_4" class ="header">H‰‰li</td>';
+			var h_haali = '<td id="t_head_4" class ="header">H√§√§li</td>';
 			if (tyyp == 1 || tyyp == 5){
 
 				var i = 0
