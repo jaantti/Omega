@@ -44,6 +44,10 @@ img{
 	font-size: 14pt;
 }
 
+#legendHelp{
+	float: right;
+}
+
 .mapLabel{
 	text-align: center;
 	font-size: 10pt;
