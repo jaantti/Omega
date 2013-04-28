@@ -18,7 +18,7 @@ function initialize()
 			mapTypeId:google.maps.MapTypeId.ROADMAP
 	};
 	var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-	var labelList = [,,,,,,,,,,,,,,,]; //15 empty element array
+	var labelList = [,,,,,,,,,,,,,,,]; //empty 15 element array
 	$.getJSON("/MapLabelServlet", function(data) {
 		$.each(data, function(k, v) {
 			if(labelList[v.piirkond_id] == undefined || labelList[v.piirkond_id].arv < v.arv){
@@ -33,8 +33,37 @@ function initialize()
 			}
 		}
 	});
-	//addLabel("Rohelised " + "100%", new google.maps.LatLng(58.378139, 26.721642), map);
+	
+	//alert($(".mapLabel-1").css("color"));
+	
+	for (var i = 1; i < 7; i++) {
+		$(".mapLabel-"+i).click(function(){
+			var this_id = $(this).attr("class");
+			this_id = this_id[21];
+			if (selectedLabel == '0'){
+				selectedLabel = this_id;
+				$(this).addClass('selectedLabel');
+			}
+			else if (selectedLabel == this_id){
+				selectedLabel = '0';
+				$(this).removeClass('selectedLabel');
+			}
+			else{
+				$(".mapLabel-"+selectedLabel).removeClass('selectedLabel');
+				var temp = $('.mapLabel-'+this_id).css('color');
+				$('.mapLabel-'+this_id).css('color', $('.mapLabel-'+selectedLabel).css('color'));
+				$('.mapLabel-'+selectedLabel).css('color', temp);
+				temp = $('.mapLabel-'+this_id).css('text-shadow');
+				$('.mapLabel-'+this_id).css('text-shadow', $('.mapLabel-'+selectedLabel).css('text-shadow'));
+				$('.mapLabel-'+selectedLabel).css('text-shadow', temp);
+				selectedLabel = '0';
+			}
+		});
+	}
 }
+
+var selectedLabel = '0';
+
 
 var logged_in = 0;
 var google_id = '-1';
