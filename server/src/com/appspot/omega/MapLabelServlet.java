@@ -35,14 +35,16 @@ public class MapLabelServlet extends HttpServlet {
 		ArrayList<MapLabel> pk = new ArrayList<MapLabel>();
 		try {
 			int arv;
-			int count = 0;
+			int piirkond_id;
+			int[] count = new int[15];
 			while (rs.next()) {
 				arv = rs.getInt("arv");
-				count += arv;
-				pk.add(new MapLabel(arv, rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString("loc")));
+				piirkond_id = rs.getInt(4);
+				count[piirkond_id] += arv;
+				pk.add(new MapLabel(arv, rs.getInt(2), rs.getString(3), piirkond_id, rs.getString(5), rs.getString("loc")));
 			}
 			for (MapLabel i:pk){
-				i.protsent = String.valueOf(Math.round((((double) i.arv)/count)*100)) + "%";
+				i.protsent = String.valueOf(Math.round((((double) i.arv)/count[i.piirkond_id])*100)) + "%";
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -191,7 +191,9 @@ function load_page(tag){
 	case "":
 		document.title = "Index";
 		$("#main").load("index.html #main");
-		$("#page_name").load("index.html #page_name");
+		$("#page_name").load("index.html #page_name", function(){
+			initialize();
+		});
 		break;
 	case "#kandidaadid":
 		document.title = "Kandidaadid";
