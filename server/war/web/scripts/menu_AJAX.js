@@ -106,58 +106,7 @@ function populate_area(area_id, selected_id) {
 	//area_id = area_id.substr(1);
 	//selected_id = selected_id.substr(1);
 	var data = '';
-	if (!navigator.onLine){
-
-		switch (area_id.substr(1)){
-		case '1':
-			data = $.parseJSON(localStorage.regions1);
-			break;		
-		case '2':
-			data = $.parseJSON(localStorage.regions2);
-			break;
-		case '3':
-			data = $.parseJSON(localStorage.regions3);
-			break;
-		case '4':
-			data = $.parseJSON(localStorage.regions4);
-			break;
-		case '5':
-			data = $.parseJSON(localStorage.regions5);
-			break;
-		case '6':
-			data = $.parseJSON(localStorage.regions6);
-			break;
-		case '7':
-			data = $.parseJSON(localStorage.regions7);
-			break;
-		case '8':
-			data = $.parseJSON(localStorage.regions8);
-			break;
-		case '9':
-			data = $.parseJSON(localStorage.regions9);
-			break;
-		case '10':
-			data = $.parseJSON(localStorage.regions10);
-			break;
-		case '11':
-			data = $.parseJSON(localStorage.regions11);
-			break;
-		case '12':
-			data = $.parseJSON(localStorage.regions12);
-			break;
-		case '13':
-			data = $.parseJSON(localStorage.regions13);
-			break;
-		case '14':
-			data = $.parseJSON(localStorage.regions14);
-			break;
-		case '15':
-			data = $.parseJSON(localStorage.regions15);
-			break;
-		}
-		genereeri_erakond(data, selected_id);
-	}
-	else{
+		
 		var input = '/PartyServlet?piirkond_id='+area_id.substr(1);
 		$.getJSON(input, function(data2) {
 			if(navigator.onLine){
@@ -165,7 +114,7 @@ function populate_area(area_id, selected_id) {
 			}
 
 		});
-	}
+	
 
 }
 
@@ -221,7 +170,6 @@ function genereeri_erakond(data, selected_id){
 $(document).ready(function(){
 	get_areas();
 	update_login();
-	offline_ready();
 	$("#logi_valja").click(function() {login_toggle()});
 	$("#logi_sisse").click(function() {login_toggle()});
 	$("#index").click(function() {window.location.hash = ""});
@@ -336,89 +284,7 @@ window.onload = function() {
 	setInterval(initializeStateFromURL, 100);
 
 }
-function offline_ready(){
-	$.getJSON('/HaaledServlet?koik=1', function(data) {
-		localStorage.koik=JSON.stringify(data)
-
-	});
-	$.getJSON('/RegionServlet', function(data) {
-		localStorage.regions=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=1', function(data) {
-		localStorage.regions1=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=2' , function(data) {
-		localStorage.regions2=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=3' , function(data) {
-		localStorage.regions3=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=4' , function(data) {
-		localStorage.regions4=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=5' , function(data) {
-		localStorage.regions5=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=6', function(data) {
-		localStorage.regions6=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=7', function(data) {
-		localStorage.regions7=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=8', function(data) {
-		localStorage.regions8=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=9', function(data) {
-		localStorage.regions9=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=10', function(data) {
-		localStorage.regions10=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=11', function(data) {
-		localStorage.regions11=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=12', function(data) {
-		localStorage.regions12=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=13', function(data) {
-		localStorage.regions13=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=14', function(data) {
-		localStorage.regions14=JSON.stringify(data)
-		console.log(data)
-
-	});
-	$.getJSON('/PartyServlet?piirkond_id=15', function(data) {
-		localStorage.regions15=JSON.stringify(data)
-		console.log(data)
-
-	});
+function eemaldaKandidaat(eesnimi, perenimi){
+	window.location = "/EemaldaRegServlet?eesnimi="+eesnimi+"&perenimi="+perenimi;
 }
+

@@ -50,123 +50,87 @@ function getSel(){
 function data_from_json(tyyp){
 	tbody = [];
 
-	if (!navigator.onLine){
+	var json_path = '/HaaledServlet?';
 
+	if (tyyp == 1) json_path += 'koik=1';
+	if (tyyp == 2) json_path += 'piirkond=' + elemToBind.value;
+	if (tyyp == 3) json_path += 'erakond=' + elemToBind2.value;
+	if (tyyp == 4) json_path += 'piirkond=' + elemToBind.value + '&' + 'erakond=' + elemToBind2.value;
+	if (tyyp == 5) json_path += 'eesnimi=' + kandidaat_nimi[0] + '&' + 'perenimi=' + kandidaat_nimi[1];
+
+	kandidaat = null;
+	$.getJSON(json_path, function(data) {
+		console.log(data);
 		tbl_header = "";
-		kandidaat = null;
+
 		var h_eesnimi = '<td id="t_head_0" class ="header">Nimi</td>';
 		var h_perenimi = '<td id="t_head_1" class ="header">Nimi</td>';
 		var h_erakond = '<td id="t_head_2" class ="header">Erakond</td>';
 		var h_piirkond = '<td id="t_head_3" class ="header">Piirkond</td>';
 		var h_haali = '<td id="t_head_4" class ="header">Hääli</td>';
-		console.log(localStorage.koik);
-		
-		var data = $.parseJSON(localStorage.koik);
-		//var data = localStorage.koik;
-		var i = 0;
-		$.each(data, function(k , v) {
-			tbody.push([]);
-			tbody[i].push(v.eesnimi);
-			tbody[i].push(v.perenimi);
-			tbody[i].push(v.erakond);
-			tbody[i].push(v.piirkond);
-			tbody[i].push(v.haaled);
-			i++;
-		});				
+		if (tyyp == 1 || tyyp == 5){
 
-		tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_erakond+h_piirkond+h_haali+"</tr>";
-		console.log(tbody);
+			var i = 0
+			$.each(data, function(k , v) {
+				tbody.push([]);
+				tbody[i].push(v.eesnimi);
+				tbody[i].push(v.perenimi);
+				tbody[i].push(v.erakond);
+				tbody[i].push(v.piirkond);
+				tbody[i].push(v.haaled);
+				i++;
+			})				
 
+			tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_erakond+h_piirkond+h_haali+"</tr>";
+			console.log(tbody);
+		}	
+		if (tyyp == 3){
+			var i = 0;
+			$.each(data, function(k , v) {
+				tbody.push([]);
+				tbody[i].push(v.eesnimi);
+				tbody[i].push(v.perenimi);
+				tbody[i].push(v.piirkond);
+				tbody[i].push(v.haaled);
+				i++;
+			})
+
+			tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_piirkond+h_haali+"</tr>";
+			console.log(tbody)
+		}
+		if (tyyp == 2){
+			var i = 0;
+			$.each(data, function(k , v) {
+				tbody.push([]);
+				tbody[i].push(v.eesnimi);
+				tbody[i].push(v.perenimi);
+				tbody[i].push(v.erakond);
+				tbody[i].push(v.haaled);
+			})
+			tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_erakond+h_haali+"</tr>";
+			console.log(tbody);
+		}
+		if (tyyp == 4){
+
+			var i = 0
+			$.each(data, function(k , v) {
+				tbody.push([]);
+				tbody[i].push(v.eesnimi);
+				tbody[i].push(v.perenimi);
+				tbody[i].push(v.haaled);
+				i++;
+			})				
+
+			tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_haali+"</tr>";
+			console.log(tbody);
+		}
 		t_body = tbody;
 		populate_table(tbl_header, t_body);
 
 		BindEvent();
 
-	}
-	else{
-		var json_path = '/HaaledServlet?';
-		
+	});
 
-		if (tyyp == 1) json_path += 'koik=1';
-		if (tyyp == 2) json_path += 'piirkond=' + elemToBind.value;
-		if (tyyp == 3) json_path += 'erakond=' + elemToBind2.value;
-		if (tyyp == 4) json_path += 'piirkond=' + elemToBind.value + '&' + 'erakond=' + elemToBind2.value;
-		if (tyyp == 5) json_path += 'eesnimi=' + kandidaat_nimi[0] + '&' + 'perenimi=' + kandidaat_nimi[1];
-
-
-		kandidaat = null;
-		$.getJSON(json_path, function(data) {
-			console.log(data);
-			tbl_header = "";
-
-			var h_eesnimi = '<td id="t_head_0" class ="header">Nimi</td>';
-			var h_perenimi = '<td id="t_head_1" class ="header">Nimi</td>';
-			var h_erakond = '<td id="t_head_2" class ="header">Erakond</td>';
-			var h_piirkond = '<td id="t_head_3" class ="header">Piirkond</td>';
-			var h_haali = '<td id="t_head_4" class ="header">Hääli</td>';
-			if (tyyp == 1 || tyyp == 5){
-
-				var i = 0
-				$.each(data, function(k , v) {
-					tbody.push([]);
-					tbody[i].push(v.eesnimi);
-					tbody[i].push(v.perenimi);
-					tbody[i].push(v.erakond);
-					tbody[i].push(v.piirkond);
-					tbody[i].push(v.haaled);
-					i++;
-				})				
-
-				tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_erakond+h_piirkond+h_haali+"</tr>";
-				console.log(tbody);
-			}	
-			if (tyyp == 3){
-				var i = 0;
-				$.each(data, function(k , v) {
-					tbody.push([]);
-					tbody[i].push(v.eesnimi);
-					tbody[i].push(v.perenimi);
-					tbody[i].push(v.piirkond);
-					tbody[i].push(v.haaled);
-					i++;
-				})
-
-				tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_piirkond+h_haali+"</tr>";
-				console.log(tbody)
-			}
-			if (tyyp == 2){
-				var i = 0;
-				$.each(data, function(k , v) {
-					tbody.push([]);
-					tbody[i].push(v.eesnimi);
-					tbody[i].push(v.perenimi);
-					tbody[i].push(v.erakond);
-					tbody[i].push(v.haaled);
-				})
-				tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_erakond+h_haali+"</tr>";
-				console.log(tbody);
-			}
-			if (tyyp == 4){
-
-				var i = 0
-				$.each(data, function(k , v) {
-					tbody.push([]);
-					tbody[i].push(v.eesnimi);
-					tbody[i].push(v.perenimi);
-					tbody[i].push(v.haaled);
-					i++;
-				})				
-
-				tbl_header += "<tr>"+h_eesnimi+h_perenimi+h_haali+"</tr>";
-				console.log(tbody);
-			}
-			t_body = tbody;
-			populate_table(tbl_header, t_body);
-
-			BindEvent();
-
-		});
-	}
 }
 function populate_table(table_header, table_body){
 	$("#my_table").remove();
@@ -299,11 +263,5 @@ function loadingImage(path, width, height, target) {
 		console.log("timeout");
 		$(".loading_img").remove();
 	}, 1000);
-
-}
-function testingLocalstorage(){
-
-	localStorage.derp=localStorage.derp+"herp";
-	console.log(localStorage.derp);
 
 }

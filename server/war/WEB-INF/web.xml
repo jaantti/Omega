@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd ">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd ">
 
 
-  <!-- Mime-mapping --> <mime-mapping>
-  	<extension>manifest</extension>
-  	<mime-type>text/cache-manifest</mime-type>
-</mime-mapping> 
+	<!-- Mime-mapping <mime-mapping> <extension>manifest</extension> <mime-type>text/cache-manifest</mime-type> 
+		</mime-mapping> -->
 	<!-- Servlets -->
 	<servlet>
-  		<servlet-name>RegisterServlet</servlet-name>
-  		<servlet-class>com.appspot.omega.RegisterServlet</servlet-class>
+		<servlet-name>RegisterServlet</servlet-name>
+		<servlet-class>com.appspot.omega.RegisterServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>
@@ -95,9 +96,18 @@
 		<url-pattern>/MapLabelServlet</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>EemaldaRegServlet</servlet-name>
+		<servlet-class>com.appspot.omega.EemaldaRegServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EemaldaRegServlet</servlet-name>
+		<url-pattern>/web/EemaldaRegServlet</url-pattern>
+	</servlet-mapping>
+
 	<!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>web/index.html</welcome-file>
-  </welcome-file-list>
+	<welcome-file-list>
+		<welcome-file>web/index.html</welcome-file>
+	</welcome-file-list>
 
 </web-app>
