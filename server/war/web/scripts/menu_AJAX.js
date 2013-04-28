@@ -257,3 +257,7 @@ window.onload = function() {
 	setInterval(initializeStateFromURL, 100);
 
 }
+function eemaldaKandidaat(eesnimi, perenimi){
+	window.location = "/EemaldaRegServlet?eesnimi="+eesnimi+"&perenimi="+perenimi;
+}
+
