@@ -9,6 +9,33 @@ jQuery(function(){
 	a = $('.search').autocomplete(options);
 });
 
+function initialize()
+{
+	var mapProp = {
+			center:new google.maps.LatLng(58.753288, 25.549380),
+			zoom:7,
+			disableDefaultUI:true,
+			mapTypeId:google.maps.MapTypeId.ROADMAP
+	};
+	var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+	var labelList = [,,,,,,,,,,,,,,,]; //15 empty element array
+	$.getJSON("/MapLabelServlet", function(data) {
+		$.each(data, function(k, v) {
+			if(labelList[v.piirkond_id] == undefined || labelList[v.piirkond_id].arv < v.arv){
+				labelList[v.piirkond_id] = v;
+			}
+			
+		});
+		for (var i = 0; i < labelList.length; i++) {
+			element = labelList[i];
+			if (element !== undefined){
+				addLabel(element.erakond + " " + element.protsent, new google.maps.LatLng(element.loc[0], element.loc[1]), map);
+			}
+		}
+	});
+	//addLabel("Rohelised " + "100%", new google.maps.LatLng(58.378139, 26.721642), map);
+}
+
 var logged_in = 0;
 var google_id = '-1';
 
@@ -205,7 +232,7 @@ $(document).ready(function(){
 	$("#statistika").click(function() {window.location.hash = "#statistika"});
 	$("#abi").click(function() {window.location.hash = "#abi"});
 	$('#stat_otsi').click(function() {});
-
+	google.maps.event.addDomListener(window, 'load', initialize);
 });
 
 function load_page(tag){

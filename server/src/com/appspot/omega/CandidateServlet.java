@@ -20,7 +20,6 @@ public class CandidateServlet extends HttpServlet{
 		String id = request.getParameter("id");
 		String query;
 		if (id == null) {
-			String nimi = request.getParameter("nimi");
 			query = "call kandidaat_by_id("+ 12 +")";
 		}
 		else{query = "call kandidaat_by_id("+ id +")";}

@@ -23,6 +23,13 @@
 img{
 	width:100%;
 }
+
+#googleMap{
+	margin-left: 1em;
+	height: 450px;
+	width: 80%;
+}
+
 .disclamer{
 	font: bold 20px Arial,Helvetica,Sans-serif;
 	color:red;

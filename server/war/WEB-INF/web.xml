@@ -86,6 +86,14 @@
 		<servlet-name>IsikServlet</servlet-name>
 		<url-pattern>/IsikServlet</url-pattern>
 	</servlet-mapping>
+	<servlet>
+  		<servlet-name>MapLabelServlet</servlet-name>
+  		<servlet-class>com.appspot.omega.MapLabelServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MapLabelServlet</servlet-name>
+		<url-pattern>/MapLabelServlet</url-pattern>
+	</servlet-mapping>
 
 	<!-- Default page to serve -->
   <welcome-file-list>

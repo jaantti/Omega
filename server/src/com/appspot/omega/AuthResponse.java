@@ -37,9 +37,12 @@ public class AuthResponse extends HttpServlet{
 	            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
 	            
 	            code = URLEncoder.encode(code, "UTF-8");
-	            String client_id = URLEncoder.encode("215240851949-4767gcfso0aj09bpdto19bgk9ujg6p2s.apps.googleusercontent.com", "UTF-8");
-	            String client_secret = URLEncoder.encode("pZMM5lk5D1KlrIy-gsndOds3", "UTF-8");
-	            String redirect_uri = URLEncoder.encode("http://localhost:8888/AuthResponse", "UTF-8");
+	            String client_id = URLEncoder.encode("215240851949.apps.googleusercontent.com", "UTF-8");
+	            //String client_id = URLEncoder.encode("215240851949-4767gcfso0aj09bpdto19bgk9ujg6p2s.apps.googleusercontent.com", "UTF-8");
+	            String client_secret = URLEncoder.encode("vH-m2ur-Q-MRMZEVScgnmR0H", "UTF-8");
+	            //String client_secret = URLEncoder.encode("pZMM5lk5D1KlrIy-gsndOds3", "UTF-8");
+	            String redirect_uri = URLEncoder.encode("http://www.omega-vl.appspot.com/AuthResponse", "UTF-8");
+	            //String redirect_uri = URLEncoder.encode("http://localhost:8888/AuthResponse", "UTF-8");
 	            String grant_type = URLEncoder.encode("authorization_code", "UTF-8");
 	            
 	            writer.write("code=" + code +
@@ -89,7 +92,7 @@ public class AuthResponse extends HttpServlet{
 	        							" '" + isik.email + "', " + "-1);");
 	        		}
 	        		conn.close();
-	                response.sendRedirect("http://localhost:8888/LoginServlet?google_id=" + isik.id + "&login=yes");
+	                response.sendRedirect("http://www.omega-vl.appspot.com/LoginServlet?google_id=" + isik.id + "&login=yes");
 	                
 	            } else {
 	            	System.out.println("Some Error ");
@@ -104,7 +107,7 @@ public class AuthResponse extends HttpServlet{
 	        }
 		}
 		else {
-			response.sendRedirect("http://localhost:8888/LoginServlet?google_id=-1&login=yes");
+			response.sendRedirect("http://www.omega-vl.appspot.com/LoginServlet?google_id=-1&login=yes");
 		}
 	}
 }
