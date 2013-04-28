@@ -30,6 +30,42 @@ img{
 	width: 80%;
 }
 
+.mapLabel{
+	text-align: center;
+	font-size: 10pt;
+	width: 50px;
+}
+
+.mapLabel-1{
+	color: green;
+	text-shadow: 0 0 1px #000;
+}
+
+.mapLabel-2{
+	color: red;
+	text-shadow: 0 0 1px #000;
+}
+
+.mapLabel-3{
+	color: yellow;
+	text-shadow: 0 0 1px #000;
+}
+
+.mapLabel-4{
+	color: blue;
+	text-shadow: 0 0 1px #000;
+}
+
+.mapLabel-5{
+	color: white;
+	text-shadow: 0 0 2px #000;
+}
+
+.mapLabel-6{
+	color: black;
+	text-shadow: 0 0 1px #000;
+}
+
 .disclamer{
 	font: bold 20px Arial,Helvetica,Sans-serif;
 	color:red;

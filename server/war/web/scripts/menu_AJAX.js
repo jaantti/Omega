@@ -29,7 +29,7 @@ function initialize()
 		for (var i = 0; i < labelList.length; i++) {
 			element = labelList[i];
 			if (element !== undefined){
-				addLabel(element.erakond + " " + element.protsent, new google.maps.LatLng(element.loc[0], element.loc[1]), map);
+				addLabel(element.erakond + " " + element.protsent, new google.maps.LatLng(element.loc[0], element.loc[1]), map, element.erakond_id.toString());
 			}
 		}
 	});
