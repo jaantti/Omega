@@ -4,8 +4,8 @@ Omega
 Link staatilisele veebilehele:
 http://www.omega-vl.appspot.com/web/index.html
 
---- Testide käivitamine ---
+### Testide käivitamine 
 
-Kõigepealt käivitada Ant target [start-selenium-server]
+Kõigepealt käivitada Ant target `start-selenium-server`
 
-Ning siis [test2]
+Ning siis `test2`
