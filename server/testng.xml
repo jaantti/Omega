@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="5" verbose="1" name="suite1" annotations="JDK">
+    <test name="Login Test" junit="false">
+        <groups>
+            <run>
+                <include name="login"/>
+            </run>	 
+        </groups>
+
+        <classes>
+            <class name="com.appspot.omega.tests.haaledErakonnaLoikes"/>
+        </classes>
+    </test>
+</suite> 
