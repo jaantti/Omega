@@ -28,6 +28,24 @@ img{
 	margin-left: 1em;
 	height: 450px;
 	width: 80%;
+	max-width: 700px;
+	float: left;
+}
+
+#legend{
+	float: left;
+}
+
+#legend ul{
+	list-style: none;
+}
+
+.legendLabel{
+	font-size: 14pt;
+}
+
+#legendHelp{
+	float: right;
 }
 
 .mapLabel{
@@ -36,34 +54,38 @@ img{
 	width: 50px;
 }
 
+.selectedLabel{
+	font-size: 20pt;
+}
+
 .mapLabel-1{
 	color: green;
-	text-shadow: 0 0 1px #000;
+	text-shadow: 0 0 3px #fff;
 }
 
 .mapLabel-2{
 	color: red;
-	text-shadow: 0 0 1px #000;
+	text-shadow: 0 0 3px #fff;
 }
 
 .mapLabel-3{
 	color: yellow;
-	text-shadow: 0 0 1px #000;
+	text-shadow: 0 0 3px #000;
 }
 
 .mapLabel-4{
 	color: blue;
-	text-shadow: 0 0 1px #000;
+	text-shadow: 0 0 3px #fff;
 }
 
 .mapLabel-5{
 	color: white;
-	text-shadow: 0 0 2px #000;
+	text-shadow: 0 0 3px #000;
 }
 
 .mapLabel-6{
 	color: black;
-	text-shadow: 0 0 1px #000;
+	text-shadow: 0 0 3px #fff;
 }
 
 .disclamer{
