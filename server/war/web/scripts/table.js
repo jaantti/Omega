@@ -1,7 +1,3 @@
-/*$.getJSON("data/findCandidatesByPart.json", function(json) {
-    console.log(json); 
-	alert(json);// this will show the info it in firebug console
-});*/
 var elemToBind;
 var elemToBind2;
 var new_table;
@@ -15,8 +11,8 @@ function BindEvent(){
 	elemToBind.onchange = function () {sleep(1000)}
 	elemToBind2.onchange = function () {sleep(1000)}
 	$('#stat_otsi').click(function() {kartulivott()});
-	
-	
+
+
 }
 
 function kartulivott(){
@@ -53,22 +49,25 @@ function getSel(){
 
 function data_from_json(tyyp){
 	tbody = [];
+
 	var json_path = '/HaaledServlet?';
+
 	if (tyyp == 1) json_path += 'koik=1';
 	if (tyyp == 2) json_path += 'piirkond=' + elemToBind.value;
 	if (tyyp == 3) json_path += 'erakond=' + elemToBind2.value;
 	if (tyyp == 4) json_path += 'piirkond=' + elemToBind.value + '&' + 'erakond=' + elemToBind2.value;
 	if (tyyp == 5) json_path += 'eesnimi=' + kandidaat_nimi[0] + '&' + 'perenimi=' + kandidaat_nimi[1];
+
 	kandidaat = null;
 	$.getJSON(json_path, function(data) {
 		console.log(data);
 		tbl_header = "";
-		
+
 		var h_eesnimi = '<td id="t_head_0" class ="header">Nimi</td>';
 		var h_perenimi = '<td id="t_head_1" class ="header">Nimi</td>';
 		var h_erakond = '<td id="t_head_2" class ="header">Erakond</td>';
 		var h_piirkond = '<td id="t_head_3" class ="header">Piirkond</td>';
-		var h_haali = '<td id="t_head_4" class ="header">H‰‰li</td>';
+		var h_haali = '<td id="t_head_4" class ="header">H√§√§li</td>';
 		if (tyyp == 1 || tyyp == 5){
 
 			var i = 0
@@ -128,15 +127,10 @@ function data_from_json(tyyp){
 		t_body = tbody;
 		populate_table(tbl_header, t_body);
 
-		//$("#my_table thead").html(tbl_header)
-		//$("#my_table tbody").html(tbl_body);
-		//$("#my_table").trigger("destroy");
-		//$("#my_table").tablesorter( {sortList: [[0,0]]} );
-		//$("#my_table").trigger("update");
-		//$("#my_table").trigger("appendCache");
-		//sorttable.makeSortable('#my_table');
 		BindEvent();
+
 	});
+
 }
 function populate_table(table_header, table_body){
 	$("#my_table").remove();
@@ -157,14 +151,14 @@ function populate_table(table_header, table_body){
 		if (t_head_status[0] == 0){
 			sort_table(0,0);
 			t_head_status[0] = 1;
-			//$("#t_head_0").removeClass("headerSortDown");
+
 			$("#t_head_0").addClass("headerSortUp");
 
 		}
 		else if (t_head_status[0] == 1){
 			sort_table(0,1);
 			t_head_status[0] = 0;
-			//$("#t_head_0").removeClass("headerSortUp");
+
 			$("#t_head_0").addClass("headerSortDown");
 		}
 
@@ -173,13 +167,13 @@ function populate_table(table_header, table_body){
 		if (t_head_status[1] == 0){
 			sort_table(1,0);
 			t_head_status[1] = 1;
-			//$("#t_head_1").removeClass("headerSortDown");
+
 			$("#t_head_1").addClass("headerSortUp");
 		}
 		else if (t_head_status[1] == 1){
 			sort_table(1,1);
 			t_head_status[1] = 0;
-			//$("#t_head_1").removeClass("headerSortUp");
+
 			$("#t_head_1").addClass("headerSortDown");
 		}
 	});
@@ -187,30 +181,30 @@ function populate_table(table_header, table_body){
 		if (t_head_status[2] == 0){
 			sort_table(2,0);
 			t_head_status[2] = 1;
-			//$("#t_head_2").removeClass("headerSortDown");
+
 			$("#t_head_2").addClass("headerSortUp");
 		}
 		else if (t_head_status[2] == 1){
 			sort_table(2,1);
 			t_head_status[2] = 0;
-			//$("#t_head_2").removeClass("headerSortUp");
+
 			$("#t_head_2").addClass("headerSortDown");
 		}
 	});
 	$("#t_head_3").click(function() {
 		var a = 3;
 		if (tbody[0].length == 4) a = 2
-		
+
 		if (t_head_status[a] == 0){
 			sort_table(a,0);
 			t_head_status[a] = 1;
-			//$("#t_head_2").removeClass("headerSortDown");
+
 			$("#t_head_3").addClass("headerSortUp");
 		}
 		else if (t_head_status[a] == 1){
 			sort_table(a,1);
 			t_head_status[a] = 0;
-			//$("#t_head_2").removeClass("headerSortUp");
+
 			$("#t_head_3").addClass("headerSortDown");
 		}
 	});
@@ -221,20 +215,20 @@ function populate_table(table_header, table_body){
 		if (t_head_status[a] == 0){
 			sort_table(a,0);
 			t_head_status[a] = 1;
-			//$("#t_head_2").removeClass("headerSortDown");
+
 			$("#t_head_4").addClass("headerSortUp");
 		}
 		else if (t_head_status[a] == 1){
 			sort_table(a,1);
 			t_head_status[a] = 0;
-			//$("#t_head_2").removeClass("headerSortUp");
+
 			$("#t_head_4").addClass("headerSortDown");
 		}
 	});
 
 }
 function sort_table(column, direction){
-	
+
 	console.log(t_body[0].length);
 	for (var j = 0; j < t_body.length; j++){
 		for(var i = 0; i < t_body.length-1; i++){
@@ -256,6 +250,7 @@ function sort_table(column, direction){
 	}
 
 	populate_table(tbl_header, t_body);
+	testingLocalstorage();
 
 
 }

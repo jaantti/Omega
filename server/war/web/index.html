@@ -7,11 +7,15 @@
 @import url("style.css");
 @import url("blue/style.css");
 </style>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD0P4aqUzSMsAEJRaLO__jpLzuG_36GdEs&sensor=false"></script>
 <script type="text/javascript" src="scripts/table.js"></script>
 <script type="text/javascript" src="scripts/menu_AJAX.js"></script>
 <script type="text/javascript" src="scripts/validation.js"></script>
 <script type="text/javascript" src="scripts/search.js"></script>
+<script type="text/javascript" src="scripts/elect.js"></script>
+<script type="text/javascript" src="scripts/infobox.js"></script>
+<script type="text/javascript" src="scripts/mapLabels.js"></script>
 </head>
 
 <body>
@@ -45,7 +49,18 @@
       </div>
       <div id="main">
         <p>Some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text and some random text.</p>
-        <img src="eesti_kaart.jpg">
+        <div id="googleMap"></div>
+        <div id="legend">
+        	<ul>
+        		<li class="legendLabel mapLabel-1">Rohelised</li>
+        		<li class="legendLabel mapLabel-2">Punased</li>
+        		<li class="legendLabel mapLabel-3">Kollased</li>
+        		<li class="legendLabel mapLabel-4">Sinised</li>
+        		<li class="legendLabel mapLabel-5">Valged</li>
+        		<li class="legendLabel mapLabel-6">Mustad</li>
+        	</ul>
+        	<p id="legendHelp">Klikkides kirjal<br />saate vahetada<br /> markerite värve.</p>
+        </div>
       </div>
       
       <div id="footer">

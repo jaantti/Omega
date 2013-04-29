@@ -1,0 +1,24 @@
+CACHE MANIFEST
+#version 0.18
+FALLBACK:
+/ offline.html
+CACHE:
+index.html
+abi.html
+kandidaadid.html
+statistika.html
+eesti_kaart.jpg
+taust.png
+taust.gif
+header.png
+scripts/menu_AJAX.js
+scripts/table.js
+scripts/jquery-1.9.1.min.js
+scripts/validation.js
+scripts/search.js
+blue/asc.gif
+blue/bg.gif
+blue/desc.gif
+blue/style.css
+NETWORK:
+*

@@ -1,12 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd ">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd ">
 
-  <!-- Servlets --><servlet>
-  	<servlet-name>hello</servlet-name>
-  	<servlet-class>com.appspot.omega.HelloWorld</servlet-class>
-</servlet>
+
+	<!-- Mime-mapping <mime-mapping> <extension>manifest</extension> <mime-type>text/cache-manifest</mime-type> 
+		</mime-mapping> -->
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>RegisterServlet</servlet-name>
+		<servlet-class>com.appspot.omega.RegisterServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
-		<servlet-name>hello</servlet-name>
-		<url-pattern>/hello</url-pattern>
+		<servlet-name>RegisterServlet</servlet-name>
+		<url-pattern>/RegisterServlet</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>RegionServlet</servlet-name>
@@ -49,17 +56,58 @@
 		<url-pattern>/HaaledServlet</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>loginServlet</servlet-name>
+		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>com.appspot.omega.loginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>loginServlet</servlet-name>
-		<url-pattern>/loginServlet</url-pattern>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AuthServlet</servlet-name>
+		<servlet-class>com.appspot.omega.AuthServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthServlet</servlet-name>
+		<url-pattern>/AuthServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AuthResponse</servlet-name>
+		<servlet-class>com.appspot.omega.AuthResponse</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthResponse</servlet-name>
+		<url-pattern>/AuthResponse</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>IsikServlet</servlet-name>
+		<servlet-class>com.appspot.omega.IsikServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>IsikServlet</servlet-name>
+		<url-pattern>/IsikServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+  		<servlet-name>MapLabelServlet</servlet-name>
+  		<servlet-class>com.appspot.omega.MapLabelServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MapLabelServlet</servlet-name>
+		<url-pattern>/MapLabelServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>EemaldaRegServlet</servlet-name>
+		<servlet-class>com.appspot.omega.EemaldaRegServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EemaldaRegServlet</servlet-name>
+		<url-pattern>/web/EemaldaRegServlet</url-pattern>
 	</servlet-mapping>
 
 	<!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>web/index.html</welcome-file>
-  </welcome-file-list>
+	<welcome-file-list>
+		<welcome-file>web/index.html</welcome-file>
+	</welcome-file-list>
 
 </web-app>

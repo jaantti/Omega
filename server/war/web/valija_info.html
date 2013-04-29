@@ -51,13 +51,14 @@ function FP_popUpMsg(msg) {//v1.0
       </div>
       <div id="valija_info">
       <!--<form class="info_text_vasakul">-->
-    	 <p>Info kasutaja kohta. Kelle poolt hääletanud, kas ja kuna ja kuhu kandideerinud.</p>
+    	 <h2 id="valija_nimi"></h2>
+    	 <h3 id="valija_email"></h3>
     	 <img src="profile_large.png" width="200" height="300"/>
     	 <fieldset>
-    	   Kelle poolt hääletasite : Nimi 
-		   <input type="button" value="Tühista hääl" onclick="FP_popUpMsg('Hääl tühistatud')"><br>
-    	   Kandideerisite X erakonna all Y piirkonda 
-		   <input type="button" value="Tühista kandideering" onclick="FP_popUpMsg('Kandideering tühistatud')"><br>
+    	   <p id="kelle_poolt">Kelle poolt hääletasite : Nimi</p>
+		   <input id="tuhista_haal" type="button" value="Tühista hääl" onclick=""><br>
+    	   <p id="kandideerisite">Kandideerisite X erakonna all Y piirkonda</p>
+		   <input id="tuhista_kandideering" type="button" value="Tühista kandideering" onclick=""><br>
     	 </fieldset>
       <!--</form>-->
         
