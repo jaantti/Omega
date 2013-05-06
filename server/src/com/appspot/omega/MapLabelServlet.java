@@ -36,7 +36,7 @@ public class MapLabelServlet extends HttpServlet {
 		try {
 			int arv;
 			int piirkond_id;
-			int[] count = new int[15];
+			int[] count = new int[16];
 			while (rs.next()) {
 				arv = rs.getInt("arv");
 				piirkond_id = rs.getInt(4);
