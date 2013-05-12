@@ -221,7 +221,7 @@ function load_page(tag){
 		document.title = "Index";
 		$("#main").load("index.html #main");
 		$("#page_name").load("index.html #page_name", function(){
-			initialize();
+			google.maps.event.addDomListener(window, 'load', initialize);
 		});
 		break;
 	case "#kandidaadid":

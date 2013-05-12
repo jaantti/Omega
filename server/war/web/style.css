@@ -113,7 +113,7 @@ img{
 	font-size:16px;
 }
 body{
-	background-image:url('taust.gif');
+	background-image:url('taust1.png');
 	background-size:100%;
 	
 }
@@ -124,7 +124,7 @@ body{
 	line-height: 1.231;
 	font-family: sans-serif; 
 	background-size:100% 100%;
-	background-image:url('taust.png');
+	background-image:url('taust2.png');
 	}
 
 #header{
