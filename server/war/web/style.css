@@ -103,7 +103,7 @@ img{
 }
 
 .search{
-	background:white no-repeat 10px 6px #fcfcfc;
+	background:white no-repeat 10px 6px;
 	border: 1px solid #d1d1d1;
 	font: bold 12px Arial,Helvetica,Sans-serif;
 	color: #bebebe;
@@ -157,7 +157,6 @@ body{
 input.loginout{
 	font: bold 14px Arial,Helvetica,Sans-serif;
 	border-radius: 18px;
-	border-size: 5px;
 	border-color:#E9C64B;
 	background-color:#ddc385;
 	width:40%;
@@ -201,7 +200,6 @@ form ul li label{
 #main input[name=logi_sisse]{
 	font: bold 14px Arial,Helvetica,Sans-serif;
 	border-radius: 8px;
-	border-size: 5px;
 	border-color:#E9C64B;
 	background-color:#ddc385;
 	width:15%;
@@ -213,7 +211,6 @@ form ul li label{
 #stat_contr input[type=button]{
 	font: bold 12px Arial,Helvetica,Sans-serif;
 	border-radius: 8px;
-	border-size: 5px;
 	border-color:#E9C64B;
 	background-color:#ddc385;
 	width:5%;
@@ -222,7 +219,6 @@ form ul li label{
 #stat_contr input[name=stat_refresh]{
 	font: bold 12px Arial,Helvetica,Sans-serif;
 	border-radius: 8px;
-	border-size: 5px;
 	border-color:#E9C64B;
 	background-color:#ddc385;
 	width:15%;
@@ -264,7 +260,6 @@ form ul li label{
 .valima input[type=button]{
 	font: bold 20px Arial,Helvetica,Sans-serif;
 	border-radius: 18px;
-	border-size: 5px;
 	border-color:#E9C64B;
 	background-color:#ddc385;
 	width:170%;
@@ -295,7 +290,6 @@ form ul li label{
 .kandidaat_form input[type=button]{
 	font: bold 12px Arial,Helvetica,Sans-serif;
 	border-radius: 8px;
-	border-size: 5px;
 	border-color:#E9C64B;
 	background-color:#ddc385;
 	width:5%;
@@ -304,7 +298,6 @@ form ul li label{
 #submit_kandidaat{
 	font: bold 12px Arial,Helvetica,Sans-serif;
 	border-radius: 8px;
-	border-size: 5px;
 	border-color:#E9C64B;
 	background-color:#ddc385;
 	width:20%;
@@ -410,7 +403,6 @@ input.previous{
 	clear: left;
 	font: bold 14px Arial,Helvetica,Sans-serif;
 	border-radius: 18px;
-	border-size: 5px;
 	border-color:#E9C64B;
 	background-color:#ddc385;
 	width:10%;
@@ -423,7 +415,6 @@ input.next{
 	clear: right;
 	font: bold 14px Arial,Helvetica,Sans-serif;
 	border-radius: 18px;
-	border-size: 5px;
 	border-color:#E9C64B;
 	background-color:#ddc385;
 	width:10%;

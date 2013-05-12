@@ -1,16 +1,19 @@
-
+/*global window: false*/
+/*global $, jQuery, document, google*/
 var options, a;
 jQuery(function(){
+	'use strict';
 	options = {
 			//lookup: ['January', 'February', 'March', 'April', 'May'],
 			serviceUrl: '/SearchServlet',
-			onSelect: function(value) {window.location.hash = "#K"+value.data}
+			onSelect: function(value) {window.location.hash = "#K"+value.data;}
 	};
 	a = $('.search').autocomplete(options);
 });
 
 function initialize()
 {
+	'use strict';
 	var mapProp = {
 			center:new google.maps.LatLng(58.753288, 25.549380),
 			zoom:7,
@@ -69,6 +72,7 @@ var logged_in = 0;
 var google_id = '-1';
 
 function login_toggle(){
+	'use strict';
 
 	if (logged_in == 1) {
 		logged_in = 0;
@@ -82,6 +86,7 @@ function login_toggle(){
 }
 
 function update_login(){
+	'use strict';
 	if (logged_in == 1) {
 		$("#logi_sisse").hide();
 		$("#logi_valja").show();
@@ -97,6 +102,7 @@ function update_login(){
 }
 
 function lae_poliitik(tag) {
+	'use strict';
 	if (logged_in == 0) {
 		$("#vali_button").hide();
 		$("#vali_hoiatus").show();
@@ -121,6 +127,7 @@ function lae_poliitik(tag) {
 }
 
 function genereeri_poliitik(nimi, id){
+	'use strict';
 	var poliitik=$('<div id="K'+id+'" class="poliitik"></div>');
 	var symlink=$('<a href="javascript:void(0)"></a>');
 	var portree=$('<img src="profile_small.png"/>');
@@ -132,6 +139,7 @@ function genereeri_poliitik(nimi, id){
 }
 
 function populate_area(area_id, selected_id) {
+	'use strict';
 	//area_id = area_id.substr(1);
 	//selected_id = selected_id.substr(1);
 	var data = '';
@@ -148,6 +156,7 @@ function populate_area(area_id, selected_id) {
 }
 
 function get_areas(){
+	'use strict';
 	$.getJSON('/RegionServlet', function(data) {
 		$.each(data, function(k, v) {
 			var id = v.id;
@@ -160,6 +169,7 @@ function get_areas(){
 	});
 }
 function genereeri_erakond(data, selected_id){
+	'use strict';
 	$("#main").show();
 	$("#main h2").text($("#"+window.location.hash.split("%%")[1]).text());
 	if (selected_id == undefined) {selected_id = "ALL"};
@@ -213,6 +223,7 @@ $(document).ready(function(){
 });
 
 function load_page(tag){
+	'use strict';
 	window.location.hash = tag;
 	tag = tag.split("%%");
 	switch(tag[0])
@@ -297,6 +308,7 @@ function load_page(tag){
 var recentHash = "";
 
 function pollHash(currentTab) {
+	'use strict';
 	if (window.location.hash==recentHash) {
 		return; // Nothing's changed since last polled.
 	}
@@ -316,6 +328,7 @@ window.onload = function() {
 
 }
 function eemaldaKandidaat(eesnimi, perenimi){
+	'use strict';
 	window.location = "/EemaldaRegServlet?eesnimi="+eesnimi+"&perenimi="+perenimi;
 }
 
