@@ -219,9 +219,9 @@ function load_page(tag){
 	{
 	case "":
 		document.title = "Index";
-		$("#main").load("index.html #main");
-		$("#page_name").load("index.html #page_name", function(){
-			google.maps.event.addDomListener(window, 'load', initialize);
+		$("#page_name").load("index.html #page_name");
+		$("#main").load("index.html #main", function(){
+			initialize();
 		});
 		break;
 	case "#kandidaadid":

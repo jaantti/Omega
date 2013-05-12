@@ -34,6 +34,8 @@ public class RegionServlet extends HttpServlet {
 		String result = gs.toJson(pk);
 		
 		conn.close();
+		response.setDateHeader("Expires", System.currentTimeMillis() + 7*24*60*60*1000);
+		response.addDateHeader("Last-Modified", System.currentTimeMillis());
 		response.setContentType("text/json");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
